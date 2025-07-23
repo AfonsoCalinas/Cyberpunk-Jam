@@ -61,7 +61,7 @@ Material:
     - _Cull: 2
     - _DstBlend: 0
     - _Float: 2.11
-    - _Intensity: 2
+    - _Intensity: 5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1

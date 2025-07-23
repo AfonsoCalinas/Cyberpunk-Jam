@@ -554,7 +554,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 199812423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0886f5af3798e4887cc5f982b6316c, type: 3}
+  m_Script: {fileID: 11500000, guid: 67392183a2c99cf47a67e158f9d9e066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tileMaterial: {fileID: 2100000, guid: 4191c9ae95988fc49a14d1fe6221d82e, type: 2}
@@ -2821,7 +2821,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 13ac5d9370203a54ca56703c8ec2d655, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2892,11 +2892,12 @@ MonoBehaviour:
   - {fileID: 1319862350}
   - {fileID: 1341692247}
   - {fileID: 1144869303}
-  - {fileID: 199812428}
+  - {fileID: 0}
   - {fileID: 439014031}
   - {fileID: 1298465275}
   - {fileID: 628523167}
   - {fileID: 328851713}
+  idleTile: {fileID: 199812428}
   inputCooldown: 0.25
 --- !u!1 &959432381
 GameObject:
@@ -2950,7 +2951,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
+  m_Intensity: 4.29
   m_Range: 10
   m_SpotAngle: 58.49755
   m_InnerSpotAngle: 20.021013
@@ -2993,7 +2994,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 4977
+  m_ColorTemperature: 17330
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
