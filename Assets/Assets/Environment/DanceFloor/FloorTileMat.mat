@@ -61,16 +61,18 @@ Material:
     - _Cull: 2
     - _DstBlend: 0
     - _Float: 2.11
+    - _Intensity: 2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _SwitchLight: 1
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 1.7932895, g: 0.42971268, b: 0.42971268, a: 0}
+    - _Color: {r: 0.8847091, g: 0.43189174, b: 1.7932897, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
