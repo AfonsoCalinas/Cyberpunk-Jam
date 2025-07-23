@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 220329364}
   - component: {fileID: 220329363}
   m_Layer: 0
-  m_Name: CaramellDansen
+  m_Name: MusicPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -586,7 +586,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: f13fecdb901ba0b4db5580b1a332744c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 31ed7062d175f044d8761b0b56b828c2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3183,7 +3183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5438c33db5d624da61deae3498c41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bpm: 165
+  _bpm: 95
   _audioSource: {fileID: 220329363}
   _intervals:
   - _steps: 0.5
