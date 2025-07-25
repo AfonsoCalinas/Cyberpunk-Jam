@@ -4,11 +4,11 @@ public class NoteSpawner : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private BeatManager _beatManager;
-    [SerializeField] private GameObject[] _leftNotePrefabs;   // UI note prefabs
-    [SerializeField] private GameObject[] _middleNotePrefabs;   // UI note prefabs
-    [SerializeField] private GameObject[] _rightNotePrefabs;   // UI note prefabs
-    [SerializeField] private RectTransform[] _spawnPoints; // UI spawn points
-    [SerializeField] private RectTransform _parentCanvas;  // The Canvas we're spawning the note prefabs to hit
+    [SerializeField] private GameObject[] _leftNotePrefabs;
+    [SerializeField] private GameObject[] _middleNotePrefabs;
+    [SerializeField] private GameObject[] _rightNotePrefabs;
+    [SerializeField] private RectTransform[] _spawnPoints;
+    [SerializeField] private RectTransform _parentCanvas;
 
     public void SpawnNote()
     {
@@ -19,10 +19,8 @@ public class NoteSpawner : MonoBehaviour
         {
             int nNote = Random.Range(0, _leftNotePrefabs.Length);
 
-            // Instantiate under the Canvas so it's visible
             GameObject note = Instantiate(_leftNotePrefabs[nNote], _parentCanvas);
 
-            // Set its anchored position to match the spawn point
             RectTransform noteRect = note.GetComponent<RectTransform>();
             noteRect.anchoredPosition = _spawnPoints[nLane].anchoredPosition;
         }
@@ -30,10 +28,8 @@ public class NoteSpawner : MonoBehaviour
         {
             int nNote = Random.Range(0, _middleNotePrefabs.Length);
 
-            // Instantiate under the Canvas so it's visible
             GameObject note = Instantiate(_middleNotePrefabs[nNote], _parentCanvas);
 
-            // Set its anchored position to match the spawn point
             RectTransform noteRect = note.GetComponent<RectTransform>();
             noteRect.anchoredPosition = _spawnPoints[nLane].anchoredPosition;
         }
@@ -41,10 +37,8 @@ public class NoteSpawner : MonoBehaviour
         {
             int nNote = Random.Range(0, _rightNotePrefabs.Length);
 
-            // Instantiate under the Canvas so it's visible
             GameObject note = Instantiate(_rightNotePrefabs[nNote], _parentCanvas);
 
-            // Set its anchored position to match the spawn point
             RectTransform noteRect = note.GetComponent<RectTransform>();
             noteRect.anchoredPosition = _spawnPoints[nLane].anchoredPosition;
         }

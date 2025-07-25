@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text _hpPlusUpgradeText;
     public TMP_Text _hpBarUpgradeText;
     public Slider _healthBar; // Slider
+    public RectTransform _healthBarRect;
+    public TMP_Text _clickAnyButtonText;
     public float _health = 1f; // 0 to 1 range
     public float hitHealAmount = 0.05f;
     public float missDamageAmount = 0.1f;
@@ -26,6 +29,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _instance = this;
+
+        _startMusic = false;
+
+        _clickAnyButtonText.gameObject.SetActive(true);
 
         _currentScoreText.text = "Score\n0";
 
@@ -37,14 +44,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_startMusic)
+        if (!_startMusic && Input.anyKeyDown)
         {
-            if (Input.anyKeyDown)
-            {
-                _startMusic = true;
+            _clickAnyButtonText.gameObject.SetActive(false);
 
-                _music.Play();
-            }
+            _startMusic = true;
+
+            _music.Play();
         }
     }
 
@@ -52,7 +58,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Hit on time");
 
-        _combo += 1;
+        _combo++;
 
         if (_combo == 10 || _combo == 20 || _combo == 40)
         {
@@ -67,11 +73,11 @@ public class GameManager : MonoBehaviour
 
             if (_combo == 40)
             {
-                _healthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 400f);
+                StartCoroutine(ResizeHealthBar(50f, 0.3f));
                 StartCoroutine(ShowHPBarUpgradeText());
             }
         }
-        
+
         _currentScore += _scorePerNote * _scoreMultiplier;
         _currentScoreText.text = "Score\n" + _currentScore;
 
@@ -94,7 +100,7 @@ public class GameManager : MonoBehaviour
         if (_health <= 0f)
         {
             Debug.Log("Game Over!");
-            // SceneManager.LoadScene("GameOverScene"); // Once I have one ofc
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 
@@ -104,12 +110,30 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         _hpPlusUpgradeText.gameObject.SetActive(false);
     }
-    
+
     private IEnumerator ShowHPBarUpgradeText()
     {
         _hpBarUpgradeText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         _hpBarUpgradeText.gameObject.SetActive(false);
+    }
+    
+    private IEnumerator ResizeHealthBar(float delta, float duration)
+    {
+        RectTransform rt = _healthBar.GetComponent<RectTransform>();
+        float initialWidth = rt.rect.width;
+        float targetWidth = initialWidth + delta;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float newWidth = Mathf.Lerp(initialWidth, targetWidth, elapsed / duration);
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth);
     }
 
 }
