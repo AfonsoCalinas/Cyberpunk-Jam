@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 9f89853485650de408e3314b7a87887d
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Scenes/WeirdEnvironment.unity
     guid: 1681b766b60b5d44dbf687a80dc7cce5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

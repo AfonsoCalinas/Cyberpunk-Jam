@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4309871957569914689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5706802820912894551}
+  - component: {fileID: 4130357216303437605}
+  m_Layer: 0
+  m_Name: NoteSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5706802820912894551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4309871957569914689}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 917.6423, y: 172.28639, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4130357216303437605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4309871957569914689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276dc0a519a872a47bdd707e64d5f814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _beatManager: {fileID: 0}
+  _leftNotePrefabs:
+  - {fileID: 6813177974735551233, guid: 59627c1afabea7d4eaefa4807074330d, type: 3}
+  - {fileID: 6094244046233441360, guid: 7d3d543625674754aa0efac689b58039, type: 3}
+  - {fileID: 6883577855197625620, guid: 08796ea6989e4004f8a62d47cb944255, type: 3}
+  _middleNotePrefabs:
+  - {fileID: 4577635236427932892, guid: bb26d65d401ad7a4eaa118438e380ace, type: 3}
+  - {fileID: 3858570706791811193, guid: cfbc5f40267eb2a489c774986a0ff7fe, type: 3}
+  - {fileID: 5221836485612567885, guid: c75cfd93854fb41499b049cf94a42d88, type: 3}
+  _rightNotePrefabs:
+  - {fileID: 4284280181947159505, guid: d65507d002b4a304f892da954b1e2c59, type: 3}
+  - {fileID: 7344465538595133176, guid: 86820f813073b2e45b2693ace1a90f29, type: 3}
+  - {fileID: 2418975049008810539, guid: bcec62e2fae8dfb4ab6aa52d02fd88ca, type: 3}
+  _spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _parentCanvas: {fileID: 0}
