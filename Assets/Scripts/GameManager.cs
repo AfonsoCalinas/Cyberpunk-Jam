@@ -70,12 +70,12 @@ public class GameManager : MonoBehaviour
                 _healthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 400f);
                 StartCoroutine(ShowHPBarUpgradeText());
             }
-
-            _currentScore += _scorePerNote * _scoreMultiplier;
-            _currentScoreText.text = "Score\n" + _currentScore;
-
-            Debug.Log(_currentScore);
         }
+        
+        _currentScore += _scorePerNote * _scoreMultiplier;
+        _currentScoreText.text = "Score\n" + _currentScore;
+
+        Debug.Log(_currentScore);
     }
 
     public void NoteMissed()

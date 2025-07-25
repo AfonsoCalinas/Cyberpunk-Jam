@@ -12,10 +12,8 @@ GameObject:
   - component: {fileID: 834885497462616453}
   - component: {fileID: 1496532447808996474}
   - component: {fileID: 3022597764347321924}
-  - component: {fileID: 5204875981219185097}
-  - component: {fileID: 7108247165949730508}
   - component: {fileID: 1360902092898319595}
-  - component: {fileID: 4887852454606205341}
+  - component: {fileID: 5204875981219185097}
   m_Layer: 5
   m_Name: YellowDownNote
   m_TagString: Untagged
@@ -94,34 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 11.7
   image: {fileID: 1496532447808996474}
---- !u!114 &5204875981219185097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4577635236427932892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 258ef91c7035a17448a1ee2c5999b759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canBePressed: 0
-  _keysToPress: 12010000
-  activatorTag: YellowDown
---- !u!114 &7108247165949730508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4577635236427932892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bac814b72a6c8e498854dc80089cf52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 200
 --- !u!58 &1360902092898319595
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -158,7 +128,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 15
---- !u!114 &4887852454606205341
+--- !u!114 &5204875981219185097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +137,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4577635236427932892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38fdd8d97a70f4547a55cf98dac59fa2, type: 3}
+  m_Script: {fileID: 11500000, guid: 258ef91c7035a17448a1ee2c5999b759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: S
+  _canBePressed: 0
+  _direction: S
+  _activatorTag: YellowDown
+  _speed: 200

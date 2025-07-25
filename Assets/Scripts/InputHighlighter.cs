@@ -16,7 +16,7 @@ public class InputHighlighter : MonoBehaviour
 
     private Button _lastHighlighted;
 
-    private Note _activeNote;
+    private NoteObject _activeNote;
 
     void Update()
     {
@@ -34,12 +34,12 @@ public class InputHighlighter : MonoBehaviour
             _lastHighlighted = toHighlight;
         }
 
-        /* if (_activeNote != null && GetInputDirection() == _activeNote.direction)
+        if (_activeNote != null && GetInputDirection() == _activeNote._direction)
         {
             GameManager._instance.NoteHit();
             Destroy(_activeNote.gameObject);
             _activeNote = null;
-        } */
+        }
     }
 
     Button GetButtonForInput(Vector2 input)
@@ -106,13 +106,13 @@ public class InputHighlighter : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Note"))
-            _activeNote = other.GetComponent<Note>();
+        if (other.CompareTag(_activeNote._activatorTag))
+            _activeNote = other.GetComponent<NoteObject>();
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Note"))
+        if (other.CompareTag(_activeNote._activatorTag))
             _activeNote = null;
     }
 }

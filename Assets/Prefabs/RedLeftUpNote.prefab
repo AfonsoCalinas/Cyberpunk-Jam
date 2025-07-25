@@ -11,11 +11,9 @@ GameObject:
   - component: {fileID: 1841480489765473079}
   - component: {fileID: 5883891173513028836}
   - component: {fileID: 8443356678347090059}
-  - component: {fileID: 123522883126161253}
-  - component: {fileID: 6496989695240659510}
   - component: {fileID: 4141862522185792355}
   - component: {fileID: 8707101156385945082}
-  - component: {fileID: 4318967894821266506}
+  - component: {fileID: 123522883126161253}
   m_Layer: 5
   m_Name: RedLeftUpNote
   m_TagString: Untagged
@@ -80,34 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &123522883126161253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6883577855197625620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 258ef91c7035a17448a1ee2c5999b759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canBePressed: 0
-  _keysToPress: 1401000011010000
-  activatorTag: RedLeftUp
---- !u!114 &6496989695240659510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6883577855197625620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bac814b72a6c8e498854dc80089cf52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 200
 --- !u!58 &4141862522185792355
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -158,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 11.7
   image: {fileID: 8443356678347090059}
---- !u!114 &4318967894821266506
+--- !u!114 &123522883126161253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +137,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6883577855197625620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38fdd8d97a70f4547a55cf98dac59fa2, type: 3}
+  m_Script: {fileID: 11500000, guid: 258ef91c7035a17448a1ee2c5999b759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: WA
+  _canBePressed: 0
+  _direction: WA
+  _activatorTag: RedLeftUp
+  _speed: 200

@@ -11,11 +11,9 @@ GameObject:
   - component: {fileID: 6417200329177209407}
   - component: {fileID: 6172919903312050435}
   - component: {fileID: 7328291912926879041}
-  - component: {fileID: 1895117067447680307}
-  - component: {fileID: 4149013979823092027}
   - component: {fileID: 1249674737887917059}
   - component: {fileID: 7161259475327020764}
-  - component: {fileID: -6452425239672690990}
+  - component: {fileID: 1895117067447680307}
   m_Layer: 5
   m_Name: BlueLeftNote
   m_TagString: Untagged
@@ -80,34 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1895117067447680307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094244046233441360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 258ef91c7035a17448a1ee2c5999b759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canBePressed: 0
-  _keysToPress: 14010000
-  activatorTag: BlueLeft
---- !u!114 &4149013979823092027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094244046233441360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bac814b72a6c8e498854dc80089cf52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 200
 --- !u!58 &1249674737887917059
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -158,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 11.7
   image: {fileID: 7328291912926879041}
---- !u!114 &-6452425239672690990
+--- !u!114 &1895117067447680307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +137,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6094244046233441360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38fdd8d97a70f4547a55cf98dac59fa2, type: 3}
+  m_Script: {fileID: 11500000, guid: 258ef91c7035a17448a1ee2c5999b759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: A
+  _canBePressed: 0
+  _direction: A
+  _activatorTag: BlueLeft
+  _speed: 200

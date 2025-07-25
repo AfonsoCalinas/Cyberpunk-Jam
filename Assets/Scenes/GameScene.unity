@@ -369,6 +369,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2714516514713545731, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_TagString
+      value: RedRightUp
+      objectReference: {fileID: 0}
     - target: {fileID: 2738607407477876384, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2191,7 +2195,7 @@ PrefabInstance:
       objectReference: {fileID: 146184013}
     - target: {fileID: 4130357216303437605, guid: 544a5d7059b63364bad47244d53953a4, type: 3}
       propertyPath: _rightNotePrefabs.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4130357216303437605, guid: 544a5d7059b63364bad47244d53953a4, type: 3}
       propertyPath: '_leftNotePrefabs.Array.data[0]'
@@ -2212,7 +2216,7 @@ PrefabInstance:
     - target: {fileID: 4130357216303437605, guid: 544a5d7059b63364bad47244d53953a4, type: 3}
       propertyPath: '_rightNotePrefabs.Array.data[1]'
       value: 
-      objectReference: {fileID: 5221836485612567885, guid: 56ba340a494a251449bb0e8eec00ace7, type: 3}
+      objectReference: {fileID: 7344465538595133176, guid: 1aa9705125efc5f45a1ab2d365fda501, type: 3}
     - target: {fileID: 4130357216303437605, guid: 544a5d7059b63364bad47244d53953a4, type: 3}
       propertyPath: '_rightNotePrefabs.Array.data[2]'
       value: 

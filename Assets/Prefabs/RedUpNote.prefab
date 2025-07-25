@@ -12,10 +12,8 @@ GameObject:
   - component: {fileID: 2368291199179565839}
   - component: {fileID: 2399713613363394044}
   - component: {fileID: 7007658101978627230}
-  - component: {fileID: 3000450422170149726}
-  - component: {fileID: 7719414559951481170}
   - component: {fileID: 5279716741969085375}
-  - component: {fileID: -857839050197939967}
+  - component: {fileID: 3000450422170149726}
   m_Layer: 5
   m_Name: RedUpNote
   m_TagString: Untagged
@@ -94,34 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 11.7
   image: {fileID: 2399713613363394044}
---- !u!114 &3000450422170149726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5221836485612567885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 258ef91c7035a17448a1ee2c5999b759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canBePressed: 0
-  _keysToPress: 11010000
-  activatorTag: RedUp
---- !u!114 &7719414559951481170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5221836485612567885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bac814b72a6c8e498854dc80089cf52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 200
 --- !u!58 &5279716741969085375
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -158,7 +128,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 15
---- !u!114 &-857839050197939967
+--- !u!114 &3000450422170149726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +137,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5221836485612567885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38fdd8d97a70f4547a55cf98dac59fa2, type: 3}
+  m_Script: {fileID: 11500000, guid: 258ef91c7035a17448a1ee2c5999b759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: W
+  _canBePressed: 0
+  _direction: W
+  _activatorTag: RedUp
+  _speed: 200

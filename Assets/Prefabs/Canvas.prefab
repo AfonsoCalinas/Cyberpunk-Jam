@@ -1674,15 +1674,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81310b0a063c27b4c8c8dcafdd7a0392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topLeft: {fileID: 0}
-  _topMiddle: {fileID: 0}
-  _topRight: {fileID: 0}
-  _midLeft: {fileID: 0}
-  _midMiddle: {fileID: 0}
-  _midRight: {fileID: 0}
-  _bottomLeft: {fileID: 0}
-  _bottomMiddle: {fileID: 0}
-  _bottomRight: {fileID: 0}
+  _topLeft: {fileID: 4451634576984670828}
+  _topMiddle: {fileID: 8316869017877067603}
+  _topRight: {fileID: 8967171081616952080}
+  _midLeft: {fileID: 3207322205861224146}
+  _midMiddle: {fileID: 6283643941221503289}
+  _midRight: {fileID: 8462984577115721610}
+  _bottomLeft: {fileID: 5922640657132976689}
+  _bottomMiddle: {fileID: 6379788574196223103}
+  _bottomRight: {fileID: 7042886944522642497}
 --- !u!1 &4868452114125239849
 GameObject:
   m_ObjectHideFlags: 0
