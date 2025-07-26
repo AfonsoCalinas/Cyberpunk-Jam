@@ -26,7 +26,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _SampleTexture2D_119edfb883d1494ba633ba2d14b6885b_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 3760b18695c318f49be5752536cebbc3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 73ad20189d566854eb6347844cf7dfd3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_2ca6d99a44fb40449074329346c23b9a_Texture_1_Texture2D:
@@ -68,7 +68,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _CastShadows: 1
-    - _Cull: 2
+    - _Cull: 0
     - _DstBlend: 0
     - _Expression: 1
     - _Iridescence: 125
