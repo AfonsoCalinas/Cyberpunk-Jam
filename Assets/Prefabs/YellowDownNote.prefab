@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 246258749061291123}
   - component: {fileID: 834885497462616453}
   - component: {fileID: 1496532447808996474}
-  - component: {fileID: 3022597764347321924}
   - component: {fileID: 1360902092898319595}
   - component: {fileID: 5204875981219185097}
   m_Layer: 5
@@ -78,20 +77,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3022597764347321924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4577635236427932892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 11.7
-  image: {fileID: 1496532447808996474}
 --- !u!58 &1360902092898319595
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,6 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canBePressed: 0
-  _direction: S
   _activatorTag: YellowDown
   _speed: 200
+  _direction: S
