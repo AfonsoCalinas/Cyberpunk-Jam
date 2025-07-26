@@ -3,12 +3,23 @@ using UnityEngine;
 public class LetsDance : MonoBehaviour
 {
     public Animator characterAnimator;
-    // public CharacterController characterController;
+
+    public bool wining = false;
+    public bool losing = false;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (wining)
+        {
+            characterAnimator.SetBool("Win", true);
+        }
+
+        if (losing)
+        {
+            characterAnimator.SetBool("Lose", true);
+        }
     }
 
     // Update is called once per frame
@@ -38,15 +49,6 @@ public class LetsDance : MonoBehaviour
              characterAnimator.SetBool("isDiagonal", isDiagonal);
              characterAnimator.SetTrigger("X");
          }
-
-        /*if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) ||
-            Input.GetKeyDown(KeyCode.D))
-        {
-            characterAnimator.SetBool("isDancing", true);
-        }
-        else 
-        {
-            characterAnimator.SetBool("isDancing", true);
-        }*/
+         
     }
 }
