@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4009626308280467148
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 168826178726790757, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_Name
+      value: HackCompleted
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 917
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 516
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9844879
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.17545259
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.252
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 20.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137799903467951573, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438701046724405095, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_Name
+      value: Cover Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446774946844941212, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_text
+      value: Next Hack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744234627164369740, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744234627164369740, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VictoryManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895825568588628492, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_text
+      value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288131275697520087, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_text
+      value: 'Hack
+
+        Completed'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478202571227955108, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478202571227955108, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478202571227955108, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 275
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184328623346328599, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912078065108383562, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912078065108383562, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912078065108383562, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912078065108383562, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -137.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410340815311889026, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextHack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410340815311889026, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VictoryManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720616799075178271, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_Name
+      value: NextHack
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191972048123682434, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_Name
+      value: MainMenu
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}

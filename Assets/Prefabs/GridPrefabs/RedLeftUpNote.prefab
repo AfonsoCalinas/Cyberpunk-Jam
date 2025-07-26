@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8443356678347090059}
   - component: {fileID: 4141862522185792355}
   - component: {fileID: 123522883126161253}
+  - component: {fileID: 44737063139610796}
   m_Layer: 5
   m_Name: RedLeftUpNote
   m_TagString: Untagged
@@ -67,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1990068990, guid: 6c67a30f615141e4293973a7be0def79, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -129,3 +130,17 @@ MonoBehaviour:
   _activatorTag: RedLeftUp
   _speed: 200
   _direction: WA
+--- !u!114 &44737063139610796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6883577855197625620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 25
+  image: {fileID: 8443356678347090059}

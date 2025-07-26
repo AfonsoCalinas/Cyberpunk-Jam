@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Hit on time");
 
-        SpawnFloatingText(_perfectPopupText, new Vector2(-197, 222));
+        SpawnFloatingText(_perfectPopupText, new Vector2(0, 222));
 
         _combo++;
 
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Missed!");
 
-        SpawnFloatingText(_missPopupText, new Vector2(-443, 197));
+        SpawnFloatingText(_missPopupText, new Vector2(-220, 197));
 
         // Combo Break (reset _combo and multiplier)
         _combo = 0;
