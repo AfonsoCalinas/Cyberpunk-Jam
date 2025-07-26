@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,14 +19,17 @@ public class GameManager : MonoBehaviour
     public TMP_Text _scoreMultiplierText;
     public TMP_Text _hpPlusUpgradeText;
     public TMP_Text _hpBarUpgradeText;
-    public Slider _healthBar; // Slider
+    public Slider _healthBar;
     public RectTransform _healthBarRect;
     public TMP_Text _clickAnyButtonText;
-    public float _health = 1f; // 0 to 1 range
+    public float _health = 1f;
     public float hitHealAmount = 0.05f;
     public float missDamageAmount = 0.1f;
+    private bool sceneScheduled = false;
+    public Canvas _canvas;
+    public GameObject _perfectPopupText;
+    public GameObject _missPopupText;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _instance = this;
@@ -41,7 +45,6 @@ public class GameManager : MonoBehaviour
         _healthBar.value = _health;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!_startMusic && Input.anyKeyDown)
@@ -51,12 +54,16 @@ public class GameManager : MonoBehaviour
             _startMusic = true;
 
             _music.Play();
+
+            ScheduleSceneTransition();
         }
     }
 
     public void NoteHit()
     {
         Debug.Log("Hit on time");
+
+        SpawnFloatingText(_perfectPopupText, new Vector2(-197, 222));
 
         _combo++;
 
@@ -88,6 +95,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Missed!");
 
+        SpawnFloatingText(_missPopupText, new Vector2(-443, 197));
+
         // Combo Break (reset _combo and multiplier)
         _combo = 0;
 
@@ -117,7 +126,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         _hpBarUpgradeText.gameObject.SetActive(false);
     }
-    
+
     private IEnumerator ResizeHealthBar(float delta, float duration)
     {
         RectTransform rt = _healthBar.GetComponent<RectTransform>();
@@ -136,4 +145,35 @@ public class GameManager : MonoBehaviour
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth);
     }
 
+    void ScheduleSceneTransition()
+    {
+        if (_music.clip != null && !sceneScheduled)
+        {
+            float delay = Mathf.Max(_music.clip.length - 5f, 0f);
+            sceneScheduled = true;
+            Invoke("GoToVictoryScene", delay);
+        }
+    }
+
+    void GoToVictoryScene()
+    {
+        string currentScenePath = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);
+        string currentSceneName = Path.GetFileNameWithoutExtension(currentScenePath);
+
+        if (currentSceneName == "Level4Scene")
+        {
+            SceneManager.LoadScene("GameCompleteScene");
+        }
+        else
+        {
+            LevelTracker.OnLevelCompleted();
+            SceneManager.LoadScene("VictoryScene");
+        }
+    }
+
+    public void SpawnFloatingText(GameObject popupText, Vector2 screenPosition)
+    {
+        GameObject instance = Instantiate(popupText, _canvas.transform);
+        instance.GetComponent<RectTransform>().anchoredPosition = screenPosition;
+    }
 }

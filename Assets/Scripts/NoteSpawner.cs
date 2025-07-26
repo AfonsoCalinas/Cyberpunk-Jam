@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NoteSpawner : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class NoteSpawner : MonoBehaviour
 
     public void SpawnNote()
     {
+
         // Pick random prefab type/lane
         int nLane = Random.Range(0, _spawnPoints.Length);
 
@@ -23,6 +25,15 @@ public class NoteSpawner : MonoBehaviour
 
             RectTransform noteRect = note.GetComponent<RectTransform>();
             noteRect.anchoredPosition = _spawnPoints[nLane].anchoredPosition;
+
+            string sceneName = SceneManager.GetActiveScene().name;
+            float noteSpeed = GetSpeedForScene(sceneName);
+
+            NoteObject noteScript = note.GetComponent<NoteObject>();
+            if (noteScript != null)
+            {
+                noteScript._speed = noteSpeed;
+            }
         }
         else if (nLane == 1)
         {
@@ -32,6 +43,15 @@ public class NoteSpawner : MonoBehaviour
 
             RectTransform noteRect = note.GetComponent<RectTransform>();
             noteRect.anchoredPosition = _spawnPoints[nLane].anchoredPosition;
+
+            string sceneName = SceneManager.GetActiveScene().name;
+            float noteSpeed = GetSpeedForScene(sceneName);
+
+            NoteObject noteScript = note.GetComponent<NoteObject>();
+            if (noteScript != null)
+            {
+                noteScript._speed = noteSpeed;
+            }
         }
         else
         {
@@ -41,8 +61,32 @@ public class NoteSpawner : MonoBehaviour
 
             RectTransform noteRect = note.GetComponent<RectTransform>();
             noteRect.anchoredPosition = _spawnPoints[nLane].anchoredPosition;
-        }
 
-        
+            string sceneName = SceneManager.GetActiveScene().name;
+            float noteSpeed = GetSpeedForScene(sceneName);
+
+            NoteObject noteScript = note.GetComponent<NoteObject>();
+            if (noteScript != null)
+            {
+                noteScript._speed = noteSpeed;
+            }
+        }
+    }
+    
+    private float GetSpeedForScene(string sceneName)
+    {
+        switch (sceneName)
+        {
+            case "Level1Scene":
+                return 200f;
+            case "Level2Scene":
+                return 250f;
+            case "Level3Scene":
+                return 300f;
+            case "Level4Scene":
+                return 350f;
+            default:
+                return 200f;
+        }
     }
 }

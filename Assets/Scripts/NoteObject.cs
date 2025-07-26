@@ -7,7 +7,7 @@ public class NoteObject : MonoBehaviour
     public string _activatorTag = "Activator";
 
     [Header("Movement Settings")]
-    [SerializeField] private float _speed = 50f; // Units per second
+    [SerializeField] public float _speed = 50f; // Units per second
     public string _direction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
