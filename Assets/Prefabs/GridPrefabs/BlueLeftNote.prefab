@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7328291912926879041}
   - component: {fileID: 1249674737887917059}
   - component: {fileID: 1895117067447680307}
-  - component: {fileID: 220061424264909261}
   m_Layer: 5
   m_Name: BlueLeftNote
   m_TagString: Untagged
@@ -38,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 616.24, y: 87.701744}
-  m_SizeDelta: {x: 80, y: 70}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6172919903312050435
 CanvasRenderer:
@@ -60,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: -876546973899608171, guid: ab9876dee7684b34f8e26f2c8aa50b5a, type: 3}
   m_Color: {r: 0.25882354, g: 0.882353, b: 0.4431373, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -68,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1564580931, guid: e933f14ed7fe24241a87fe80472fb4e5, type: 3}
+  m_Sprite: {fileID: -1475718307, guid: c8b22a09bf553c74ba8749a3f10e0acf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -130,17 +129,3 @@ MonoBehaviour:
   _activatorTag: BlueLeft
   _speed: 200
   _direction: A
---- !u!114 &220061424264909261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094244046233441360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 25
-  image: {fileID: 7328291912926879041}

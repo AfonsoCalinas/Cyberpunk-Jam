@@ -41,6 +41,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _SwitchLight: 0
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 0, g: 1.1970912, b: 0.07980601, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8443356678347090059}
   - component: {fileID: 4141862522185792355}
   - component: {fileID: 123522883126161253}
-  - component: {fileID: 44737063139610796}
   m_Layer: 5
   m_Name: RedLeftUpNote
   m_TagString: Untagged
@@ -38,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 616.24, y: 87.701744}
-  m_SizeDelta: {x: 80, y: 70}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5883891173513028836
 CanvasRenderer:
@@ -60,15 +59,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.6392157, g: 0, b: 1, a: 1}
+  m_Material: {fileID: -876546973899608171, guid: ab9876dee7684b34f8e26f2c8aa50b5a, type: 3}
+  m_Color: {r: 1, g: 0.6, b: 0.25, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1990068990, guid: 6c67a30f615141e4293973a7be0def79, type: 3}
+  m_Sprite: {fileID: -1070780309, guid: 840c90e35ec15d24590dcc62e740fa60, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -130,17 +129,3 @@ MonoBehaviour:
   _activatorTag: RedLeftUp
   _speed: 200
   _direction: WA
---- !u!114 &44737063139610796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6883577855197625620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 25
-  image: {fileID: 8443356678347090059}
