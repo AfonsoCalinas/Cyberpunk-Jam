@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     public Canvas _canvas;
     public GameObject _perfectPopupText;
     public GameObject _missPopupText;
+    public Transform _perfectTransform;
+    private Vector3 _perfectPosition;
+    public Transform _missTransform;
+    private Vector3 _missPosition;
 
     void Start()
     {
@@ -43,6 +47,11 @@ public class GameManager : MonoBehaviour
         _scoreMultiplierText.text = "Multiplier\nx1";
 
         _healthBar.value = _health;
+
+        _missPosition = _missTransform.position;
+        
+        _perfectPosition = _perfectTransform.position;
+
     }
 
     void Update()
@@ -63,7 +72,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Hit on time");
 
-        SpawnFloatingText(_perfectPopupText, new Vector2(0, 222));
+        // SpawnFloatingText(_perfectPopupText, new Vector2(0, 222));
+        SpawnFloatingText(_perfectPopupText, _perfectPosition);
 
         _combo++;
 
@@ -95,8 +105,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Missed!");
 
-        SpawnFloatingText(_missPopupText, new Vector2(-220, 197));
-
+        // SpawnFloatingText(_missPopupText, new Vector2(-220, 197));
+        SpawnFloatingText(_missPopupText, _missPosition);
+        
         // Combo Break (reset _combo and multiplier)
         _combo = 0;
 
@@ -171,9 +182,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SpawnFloatingText(GameObject popupText, Vector2 screenPosition)
+    public void SpawnFloatingText(GameObject popupText, Vector3 screenPosition)
     {
         GameObject instance = Instantiate(popupText, _canvas.transform);
-        instance.GetComponent<RectTransform>().anchoredPosition = screenPosition;
+        instance.GetComponent<RectTransform>().position = screenPosition;
     }
 }
