@@ -80,7 +80,7 @@ public class InputHighlighter : MonoBehaviour
         if (btn != null)
         {
             ColorBlock cb = btn.colors;
-            cb.normalColor = Color.gray;
+            cb.normalColor = Color.black;
             btn.colors = cb;
         }
     }
@@ -98,7 +98,7 @@ public class InputHighlighter : MonoBehaviour
             if (btn != null)
             {
                 ColorBlock cb = btn.colors;
-                cb.normalColor = Color.white;
+                cb.normalColor = Color.lightGray;
                 btn.colors = cb;
             }
         }

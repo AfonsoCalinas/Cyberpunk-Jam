@@ -34,6 +34,7 @@ Material:
     - _Cutoff: 0.004
     - _EmissionEnabled: 1
     m_Colors:
+    - _Color: {r: 0.56471163, g: 0.08228267, b: 0.9734455, a: 1}
     - _EmissionColor: {r: 4.517693, g: 0.6582616, b: 7.787564, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
