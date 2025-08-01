@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7705037563191026746}
   - component: {fileID: 7586329095741383033}
   - component: {fileID: 5827625210309044053}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: NoteBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1496532447808996474}
   - component: {fileID: 1360902092898319595}
   - component: {fileID: 5204875981219185097}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: YellowDownNote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,6 +301,10 @@ PrefabInstance:
     - target: {fileID: 5280744195814831180, guid: 92f1113d6c471a4438eb5bae834c6105, type: 3}
       propertyPath: m_Name
       value: Trails
+      objectReference: {fileID: 0}
+    - target: {fileID: 5280744195814831180, guid: 92f1113d6c471a4438eb5bae834c6105, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
