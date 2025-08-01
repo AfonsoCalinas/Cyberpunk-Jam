@@ -18,6 +18,8 @@ public class InputHighlighter : MonoBehaviour
 
     private NoteObject _activeNote;
 
+    [SerializeField] private AudioClip hitSound;
+
     void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
@@ -37,6 +39,9 @@ public class InputHighlighter : MonoBehaviour
         if (_activeNote != null && GetInputDirection() == _activeNote._direction)
         {
             GameManager._instance.NoteHit();
+            
+           
+            // destroy note
             Destroy(_activeNote.gameObject);
             _activeNote = null;
         }
@@ -83,6 +88,8 @@ public class InputHighlighter : MonoBehaviour
             cb.normalColor = Color.black;
             btn.colors = cb;
         }
+        // play sfx
+        SoundFXManager.instance.PlaySoundFXClip( hitSound, transform, .1f);
     }
 
     void ResetAllButtons()

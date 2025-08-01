@@ -130,6 +130,7 @@ MonoBehaviour:
   _activatorTag: BlueLeft
   _speed: 200
   _direction: A
+  hitParticle: {fileID: 5625208785162394811, guid: 0c61ce1206a9f7248a432d344b7713a1, type: 3}
 --- !u!1001 &6685881391735529973
 PrefabInstance:
   m_ObjectHideFlags: 0

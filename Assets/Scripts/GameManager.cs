@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     private Vector3 _perfectPosition;
     public Transform _missTransform;
     private Vector3 _missPosition;
+    
+    [SerializeField] private AudioClip goodSound;
+    [SerializeField] private AudioClip badSound;
 
     void Start()
     {
@@ -75,6 +78,9 @@ public class GameManager : MonoBehaviour
         // SpawnFloatingText(_perfectPopupText, new Vector2(0, 222));
         SpawnFloatingText(_perfectPopupText, _perfectPosition);
 
+        // play sfx
+        SoundFXManager.instance.PlaySoundFXClip( goodSound, transform, 2f);
+        
         _combo++;
 
         if (_combo == 10 || _combo == 20 || _combo == 40)
@@ -107,6 +113,10 @@ public class GameManager : MonoBehaviour
 
         // SpawnFloatingText(_missPopupText, new Vector2(-220, 197));
         SpawnFloatingText(_missPopupText, _missPosition);
+        
+        // play sfx
+        SoundFXManager.instance.PlaySoundFXClip( badSound, transform, 2f);
+
         
         // Combo Break (reset _combo and multiplier)
         _combo = 0;

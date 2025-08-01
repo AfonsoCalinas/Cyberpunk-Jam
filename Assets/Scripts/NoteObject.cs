@@ -10,6 +10,7 @@ public class NoteObject : MonoBehaviour
     [SerializeField] public float _speed = 50f; // Units per second
     public string _direction;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,11 +26,13 @@ public class NoteObject : MonoBehaviour
 
         if (_canBePressed && inputDir == _direction)
         {
+
             GameManager._instance.NoteHit();
             _hasBeenPressed = true;
             gameObject.SetActive(false);
         }
     }
+
 
     private string GetInputDirection()
     {
