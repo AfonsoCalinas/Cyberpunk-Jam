@@ -37,8 +37,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip goodSound;
     [SerializeField] private AudioClip badSound;
 
+    public Material _dancerMat;
+    private float waitTime = 2f;
+
     void Start()
     {
+        _dancerMat.SetFloat("_Expression", 0);
+        
+        
         _instance = this;
 
         _startMusic = false;
@@ -94,11 +100,20 @@ public class GameManager : MonoBehaviour
 
             StartCoroutine(ShowHPPlusUpgradeText());
 
+            _dancerMat.SetFloat("_Expression", 3);
             if (_combo == 40)
             {
                 StartCoroutine(ResizeHealthBar(50f, 0.3f));
                 StartCoroutine(ShowHPBarUpgradeText());
+                _dancerMat.SetFloat("_Expression", 4);
             }
+        }
+        else
+        {
+            _dancerMat.SetFloat("_Expression", 2); 
+            
+
+            Invoke("HoldExpression", waitTime);
         }
 
         _currentScore += _scorePerNote * _scoreMultiplier;
@@ -107,10 +122,15 @@ public class GameManager : MonoBehaviour
         Debug.Log(_currentScore);
     }
 
+
+
     public void NoteMissed()
     {
         Debug.Log("Missed!");
 
+        _dancerMat.SetFloat("_Expression", 1);
+        Invoke("HoldExpression", waitTime);
+        
         // SpawnFloatingText(_missPopupText, new Vector2(-220, 197));
         SpawnFloatingText(_missPopupText, _missPosition);
         
@@ -129,11 +149,20 @@ public class GameManager : MonoBehaviour
 
         if (_health <= 0f)
         {
+            _dancerMat.SetFloat("_Expression", 1);
             Debug.Log("Game Over!");
             SceneManager.LoadScene("GameOverScene");
         }
     }
 
+    private void HoldExpression()
+    {
+        
+        _dancerMat.SetFloat("_Expression", 0);
+        // return null;
+
+    }
+    
     private IEnumerator ShowHPPlusUpgradeText()
     {
         _hpPlusUpgradeText.gameObject.SetActive(true);
@@ -178,6 +207,7 @@ public class GameManager : MonoBehaviour
 
     void GoToVictoryScene()
     {
+        _dancerMat.SetFloat("_Expression", 4);
         string currentScenePath = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);
         string currentSceneName = Path.GetFileNameWithoutExtension(currentScenePath);
 
