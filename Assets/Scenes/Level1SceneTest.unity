@@ -1066,6 +1066,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4268877565794863880, guid: f91293758d0ebc24d921956da4e65258, type: 3}
+      propertyPath: m_Range
+      value: 777
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268877565794863880, guid: f91293758d0ebc24d921956da4e65258, type: 3}
+      propertyPath: m_Intensity
+      value: 145860
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268877565794863880, guid: f91293758d0ebc24d921956da4e65258, type: 3}
+      propertyPath: m_SpotAngle
+      value: 179
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268877565794863880, guid: f91293758d0ebc24d921956da4e65258, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 140.52345
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268877565794863880, guid: f91293758d0ebc24d921956da4e65258, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4568810168522959095, guid: f91293758d0ebc24d921956da4e65258, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1157,6 +1177,10 @@ PrefabInstance:
     - target: {fileID: 4913221082867182975, guid: f91293758d0ebc24d921956da4e65258, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 26.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087247068882019500, guid: f91293758d0ebc24d921956da4e65258, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
