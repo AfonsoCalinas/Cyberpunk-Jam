@@ -5,10 +5,10 @@ public class LetsDance : MonoBehaviour
     public Animator characterAnimator;
 
     public float retriggerDelay = 0.5f;
-    private float retriggerTimer = 0f;
+    private float _retriggerTimer = 0f;
 
     
-    private string currentDirection = ""; // track last input
+    private string _currentDirection = ""; // track last input
     
     
     public bool wining = false;
@@ -34,42 +34,48 @@ public class LetsDance : MonoBehaviour
 
     void Update()
     {
-        string direction = GetInputDirection();
+        /*string direction = GetInputDirection();
 
         bool isInputActive = !string.IsNullOrEmpty(direction);
+        characterAnimator.SetBool("IsDancing", isInputActive);*/
+        
+        string direction = InputDirectionManager.GetDirectionName();
+        bool isInputActive = !string.IsNullOrEmpty(direction);
+
+        // Update IsDancing
         characterAnimator.SetBool("IsDancing", isInputActive);
 
         if (isInputActive)
         {
-            if (direction != currentDirection)
+            if (direction != _currentDirection)
             {
                 // New direction — trigger immediately
-                retriggerTimer = retriggerDelay;
+                _retriggerTimer = retriggerDelay;
                 // characterAnimator.ResetAllTriggers();
                 characterAnimator.SetTrigger(direction);
-                currentDirection = direction;
+                _currentDirection = direction;
             }
             else
             {
                 // Same direction — countdown to retrigger
-                retriggerTimer -= Time.deltaTime;
-                if (retriggerTimer <= 0f)
+                _retriggerTimer -= Time.deltaTime;
+                if (_retriggerTimer <= 0f)
                 {
                     // characterAnimator.ResetAllTriggers();
                     characterAnimator.SetTrigger(direction);
-                    retriggerTimer = retriggerDelay;
+                    _retriggerTimer = retriggerDelay;
                 }
             }
         }
         else
         {
             // No input
-            currentDirection = "";
-            retriggerTimer = 0f;
+            _currentDirection = "";
+            _retriggerTimer = 0f;
         }
     }
 
-    private string GetInputDirection()
+    /*private string GetInputDirection()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
@@ -84,5 +90,5 @@ public class LetsDance : MonoBehaviour
         if (v == -1) return "S";
 
         return "";
-    }
+    }*/
 }
