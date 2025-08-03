@@ -28,6 +28,12 @@ public class NoteObject : MonoBehaviour
         if (_canBePressed && InputDirectionManager.GetDirectionName() == _direction)
         {
             GameManager._instance.NoteHit();
+            
+            if (GameManager._instance.particleEffectController != null)
+            {
+                GameManager._instance.particleEffectController.PlayParticlesForDirection(_direction);
+            }
+            
             _hasBeenPressed = true;
             gameObject.SetActive(false);
         }
