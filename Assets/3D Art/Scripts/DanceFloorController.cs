@@ -12,10 +12,7 @@ public class DanceFloorController : MonoBehaviour
 
     void Update()
     {
-        Vector2Int inputDir = new Vector2Int(
-            Mathf.RoundToInt(Input.GetAxisRaw("Horizontal")),
-            Mathf.RoundToInt(Input.GetAxisRaw("Vertical"))
-        );
+        Vector2Int inputDir = InputDirectionManager.GetDirectionVector();
 
         if (inputDir == Vector2Int.zero)
         {

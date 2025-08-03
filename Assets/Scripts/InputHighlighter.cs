@@ -15,18 +15,13 @@ public class InputHighlighter : MonoBehaviour
     public Button _bottomRight;
 
     private Button _lastHighlighted;
-
     private NoteObject _activeNote;
 
     [SerializeField] private AudioClip hitSound;
 
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
-        Vector2 input = new Vector2(h, v);
-
+        Vector2 input = InputDirectionManager.GetDirectionVector();
         Button toHighlight = GetButtonForInput(input);
 
         if (toHighlight != _lastHighlighted)
@@ -36,11 +31,10 @@ public class InputHighlighter : MonoBehaviour
             _lastHighlighted = toHighlight;
         }
 
-        if (_activeNote != null && GetInputDirection() == _activeNote._direction)
+        if (_activeNote != null && InputDirectionManager.GetDirectionName() == _activeNote._direction)
         {
             GameManager._instance.NoteHit();
-            
-           
+
             // destroy note
             Destroy(_activeNote.gameObject);
             _activeNote = null;
@@ -63,23 +57,6 @@ public class InputHighlighter : MonoBehaviour
         return _midMiddle;
     }
 
-    string GetInputDirection()
-    {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
-        if (h == -1 && v == 1) return "WA";
-        if (h == 1 && v == 1) return "WD";
-        if (h == -1 && v == -1) return "SA";
-        if (h == 1 && v == -1) return "SD";
-        if (h == -1) return "A";
-        if (h == 1) return "D";
-        if (v == 1) return "W";
-        if (v == -1) return "S";
-
-        return "";
-    }
-
     void HighlightButton(Button btn)
     {
         if (btn != null)
@@ -88,8 +65,9 @@ public class InputHighlighter : MonoBehaviour
             cb.normalColor = Color.black;
             btn.colors = cb;
         }
+
         // play sfx
-        SoundFXManager.instance.PlaySoundFXClip( hitSound, transform, .1f);
+        SoundFXManager.instance.PlaySoundFXClip(hitSound, transform, .1f);
     }
 
     void ResetAllButtons()
@@ -105,21 +83,27 @@ public class InputHighlighter : MonoBehaviour
             if (btn != null)
             {
                 ColorBlock cb = btn.colors;
-                cb.normalColor = Color.lightGray;
+                cb.normalColor = Color.gray;
                 btn.colors = cb;
             }
         }
     }
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(_activeNote._activatorTag))
-            _activeNote = other.GetComponent<NoteObject>();
+        if (_activeNote == null && other.TryGetComponent(out NoteObject note) &&
+            other.CompareTag(note._activatorTag))
+        {
+            _activeNote = note;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(_activeNote._activatorTag))
+        if (_activeNote != null && other.CompareTag(_activeNote._activatorTag))
+        {
             _activeNote = null;
+        }
     }
 }
+

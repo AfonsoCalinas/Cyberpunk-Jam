@@ -19,7 +19,7 @@ public static class InputDirectionManager
         return "";
     }
 
-    private static Vector2Int GetDirectionVector()
+    public static Vector2Int GetDirectionVector()
     {
         int h = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
         int v = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));

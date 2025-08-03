@@ -20,13 +20,13 @@ public class NoteObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Move upward
         transform.Translate(_speed * Time.deltaTime * Vector3.up, Space.World);
 
-        string inputDir = GetInputDirection();
+        // string inputDir = GetInputDirection();
 
-        if (_canBePressed && inputDir == _direction)
+        if (_canBePressed && InputDirectionManager.GetDirectionName() == _direction)
         {
-
             GameManager._instance.NoteHit();
             _hasBeenPressed = true;
             gameObject.SetActive(false);
@@ -34,7 +34,7 @@ public class NoteObject : MonoBehaviour
     }
 
 
-    private string GetInputDirection()
+    /*private string GetInputDirection()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
@@ -49,7 +49,7 @@ public class NoteObject : MonoBehaviour
         if (v == -1) return "S";
 
         return "";
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D other)
     {
