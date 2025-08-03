@@ -2442,7 +2442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 865265921165386143, guid: 7d5df0b9f60e6b04285de3d5db4d107c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2598456614181360386, guid: 7d5df0b9f60e6b04285de3d5db4d107c, type: 3}
       propertyPath: _music
@@ -3260,6 +3260,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -7.84
       objectReference: {fileID: 0}
+    - target: {fileID: 2841909780123931849, guid: 6e71cada11edfce428a13a4278d4ca35, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8ff20acdf5c54df4a87f0d44519ff81a, type: 2}
     - target: {fileID: 3456516041184911442, guid: 6e71cada11edfce428a13a4278d4ca35, type: 3}
       propertyPath: m_IsActive
       value: 1
