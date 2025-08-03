@@ -1,11 +1,21 @@
 using UnityEngine;
+using Terresquall; // Namespace for the joystick API
 
 public static class InputDirectionManager
 {
     public static string GetDirectionName()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        float h, v;
+        if (VirtualJoystick.CountActiveInstances() > 0)
+        {
+            h = VirtualJoystick.GetAxisRaw("Horizontal");
+            v = VirtualJoystick.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            h = Input.GetAxisRaw("Horizontal");
+            v = Input.GetAxisRaw("Vertical");
+        }
 
         if (Mathf.Approximately(h, -1) && Mathf.Approximately(v, 1)) return "WA";
         if (Mathf.Approximately(h, 1) && Mathf.Approximately(v, 1)) return "WD";
@@ -21,9 +31,18 @@ public static class InputDirectionManager
 
     public static Vector2Int GetDirectionVector()
     {
-        int h = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-        int v = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
-        return new Vector2Int(h, v);
+        float h, v;
+        if (VirtualJoystick.CountActiveInstances() > 0)
+        {
+            h = VirtualJoystick.GetAxisRaw("Horizontal");
+            v = VirtualJoystick.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            h = Input.GetAxisRaw("Horizontal");
+            v = Input.GetAxisRaw("Vertical");
+        }
+        return new Vector2Int(Mathf.RoundToInt(h), Mathf.RoundToInt(v));
     }
 
     public static bool IsDiagonal()
