@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     
     public Slider progressBar;
     public ParticleEffectController particleEffectController;
+    public PauseManager pauseManager;
     void Start()
     {
         _dancerMat.SetFloat("_Expression", 0);
