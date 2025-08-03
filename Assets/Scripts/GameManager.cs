@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     public Material _dancerMat;
     private float waitTime = 2f;
+    
+    public Slider progressBar;
 
     void Start()
     {
@@ -61,6 +63,11 @@ public class GameManager : MonoBehaviour
         
         _perfectPosition = _perfectTransform.position;
 
+        if (_music.clip != null)
+        {
+            progressBar.minValue = 0;
+            progressBar.maxValue = _music.clip.length;
+        }
     }
 
     void Update()
@@ -75,6 +82,12 @@ public class GameManager : MonoBehaviour
 
             ScheduleSceneTransition();
         }
+
+        if (_music.isPlaying)
+        {
+            progressBar.value = _music.time;
+        }
+
     }
 
     public void NoteHit()

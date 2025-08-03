@@ -829,11 +829,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5274155000518283528, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 75.9
+      value: -16.3
       objectReference: {fileID: 0}
     - target: {fileID: 5274155000518283528, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 58.32
+      value: 77.1
       objectReference: {fileID: 0}
     - target: {fileID: 5288818452866878803, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_SizeDelta.y
@@ -865,7 +865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5374558610546331357, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_Color.g
-      value: 0.018601656
+      value: 0.0019505818
       objectReference: {fileID: 0}
     - target: {fileID: 5374558610546331357, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_Color.r
@@ -877,9 +877,33 @@ PrefabInstance:
       objectReference: {fileID: -876546973899608171, guid: ab9876dee7684b34f8e26f2c8aa50b5a, type: 3}
     - target: {fileID: 5414519987360678656, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_text
-      value: 'Antivirus Alert
+      value: 'Antivirus alert
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414519987360678656, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_fontSize
+      value: 43.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414519987360678656, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 74c3a80e719bd4f4b80d494239b57a4b, type: 2}
+    - target: {fileID: 5414519987360678656, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 43.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414519987360678656, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5182421179809901699, guid: 74c3a80e719bd4f4b80d494239b57a4b, type: 2}
+    - target: {fileID: 5414519987360678656, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414519987360678656, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5496286615874800749, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_IsActive
@@ -1042,20 +1066,44 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -538.9
+      value: -465.23
       objectReference: {fileID: 0}
     - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1075,11 +1123,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1342.75
+      value: 632.75
       objectReference: {fileID: 0}
     - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 50.8
+      value: 555.8
       objectReference: {fileID: 0}
     - target: {fileID: 6713202638168246259, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1255,11 +1303,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8769140513339854768, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -10.199982
+      value: -10.199951
       objectReference: {fileID: 0}
     - target: {fileID: 8769140513339854768, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.9950027
+      value: -1.9949951
       objectReference: {fileID: 0}
     - target: {fileID: 8894973943043726006, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_IsActive
@@ -2425,6 +2473,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 146184016}
     - target: {fileID: 2598456614181360386, guid: 7d5df0b9f60e6b04285de3d5db4d107c, type: 3}
+      propertyPath: progressBar
+      value: 
+      objectReference: {fileID: 1967190210}
+    - target: {fileID: 2598456614181360386, guid: 7d5df0b9f60e6b04285de3d5db4d107c, type: 3}
       propertyPath: _healthBarRect
       value: 
       objectReference: {fileID: 1470889397}
@@ -2996,7 +3048,7 @@ GameObject:
   - component: {fileID: 1967190209}
   - component: {fileID: 1967190210}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: ProgressSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
