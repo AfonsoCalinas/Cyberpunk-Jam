@@ -460,6 +460,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1140822053}
+    - target: {fileID: 4288131275697520087, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 74c3a80e719bd4f4b80d494239b57a4b, type: 2}
+    - target: {fileID: 4288131275697520087, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5182421179809901699, guid: 74c3a80e719bd4f4b80d494239b57a4b, type: 2}
+    - target: {fileID: 4288131275697520087, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478202571227955108, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912078065108383562, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 8410340815311889026, guid: 52ad737c2968ef640b54e81459e457ae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

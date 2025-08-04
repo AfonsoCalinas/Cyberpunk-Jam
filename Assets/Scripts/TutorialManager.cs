@@ -81,7 +81,8 @@ public class TutorialManager : MonoBehaviour
                     _hpBarUpgradeText.gameObject.SetActive(false);
                     break;
                 case 6:
-                    SceneManager.LoadScene("Level1Scene");
+                    // SceneManager.LoadScene("Level1Scene");
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
                     break;
                 default:
                     break;

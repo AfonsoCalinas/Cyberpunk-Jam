@@ -10,6 +10,8 @@ public class GameOverManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+        // Application.Quit();
     }
 }

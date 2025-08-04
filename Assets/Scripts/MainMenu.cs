@@ -3,7 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void Level1()
+    public bool simulateMobileInEditor = false;
+    public GameObject quitButton;
+    private bool _isMobile;
+    void Start()
+    { 
+        _isMobile = Application.isMobilePlatform;
+
+#if UNITY_EDITOR
+        if (simulateMobileInEditor)
+            _isMobile = true;
+#endif
+
+        quitButton.SetActive(!_isMobile);
+    }
+    
+    /*public void Level1()
     {
         SceneManager.LoadScene("TutorialScene");
     }
@@ -21,7 +36,25 @@ public class MainMenu : MonoBehaviour
     public void Level4()
     {
         SceneManager.LoadScene("Level4Scene");
+    }*/
+    
+    public void LoadLevelByIndex(int levelNumber)
+    {
+        // Assuming Level1Scene starts at index 2
+        int baseIndex = 2;
+
+        int buildIndex = baseIndex + (levelNumber - 1);
+
+        if (buildIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(buildIndex);
+        }
+        else
+        {
+            Debug.LogWarning("Invalid level number.");
+        }
     }
+
 
     public void QuitGame()
     {

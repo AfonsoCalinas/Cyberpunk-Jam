@@ -88,8 +88,24 @@ public class GameManager : MonoBehaviour
         {
             progressBar.value = _music.time;
         }
-
+        
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log("[DEBUG] Skipping to end of level.");
+            SimulateWin();
+        }
+#endif
     }
+    
+    
+#if UNITY_EDITOR
+    void SimulateWin()
+    {
+        // Call your normal level-win logic here
+        GoToVictoryScene();
+    }
+#endif
 
     public void NoteHit()
     {
@@ -222,10 +238,29 @@ public class GameManager : MonoBehaviour
     void GoToVictoryScene()
     {
         _dancerMat.SetFloat("_Expression", 4);
-        string currentScenePath = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);
+        
+        /*string currentScenePath = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);
         string currentSceneName = Path.GetFileNameWithoutExtension(currentScenePath);
 
         if (currentSceneName == "Level4Scene")
+        {
+            SceneManager.LoadScene("GameCompleteScene");
+        }
+        else
+        {
+            LevelTracker.OnLevelCompleted();
+            SceneManager.LoadScene("VictoryScene");
+        }*/
+        
+        var currentIndex = SceneManager.GetActiveScene().buildIndex;
+        var totalScenes = SceneManager.sceneCountInBuildSettings;
+
+        // Calculate the index of the 4th scene from the end
+        var fourthFromLastIndex = totalScenes - 4;
+        
+        // var fourthFromLastIndex = totalScenes;
+
+        if (currentIndex == fourthFromLastIndex)
         {
             SceneManager.LoadScene("GameCompleteScene");
         }

@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628759e7a7c81304087e70fe1177dd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simulateMobileInEditor: 0
+  quitButton: {fileID: 1956866154}
 --- !u!1 &99485388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,12 +1172,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1906433002}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Level4
-        m_Mode: 1
+        m_MethodName: LoadLevelByIndex
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1439,8 +1441,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1906433002}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Level1
-        m_Mode: 1
+        m_MethodName: LoadLevelByIndex
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1892,12 +1894,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1906433002}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Level3
-        m_Mode: 1
+        m_MethodName: LoadLevelByIndex
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2236,12 +2238,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1906433002}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Level2
-        m_Mode: 1
+        m_MethodName: LoadLevelByIndex
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3451,6 +3453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628759e7a7c81304087e70fe1177dd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simulateMobileInEditor: 0
+  quitButton: {fileID: 1956866154}
 --- !u!4 &1906433003
 Transform:
   m_ObjectHideFlags: 0
