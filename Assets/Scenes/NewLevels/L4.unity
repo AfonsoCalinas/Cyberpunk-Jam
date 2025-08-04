@@ -4796,7 +4796,7 @@ AudioSource:
   m_GameObject: {fileID: 1648530469}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 167f0dab2283056478467f8049ce059a, type: 2}
+  OutputAudioMixerGroup: {fileID: 771475202892751106, guid: 167f0dab2283056478467f8049ce059a, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 076962a008fba29418205da19ec7b326, type: 3}
   m_PlayOnAwake: 0
@@ -4974,6 +4974,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656322817}
   m_CullTransparentMesh: 1
+--- !u!1 &1662743623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1662743625}
+  - component: {fileID: 1662743624}
+  m_Layer: 0
+  m_Name: SoundMixerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1662743624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662743623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2264c1b0ea434643a89c5a17850f0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 167f0dab2283056478467f8049ce059a, type: 2}
+--- !u!4 &1662743625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662743623}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 181.89833, y: 82.19032, z: 33.32249}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1792363066 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2380988300898184295, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
@@ -6523,5 +6568,6 @@ SceneRoots:
   - {fileID: 865405931}
   - {fileID: 8700265838689169289}
   - {fileID: 1021223586}
+  - {fileID: 1662743625}
   - {fileID: 885736835}
   - {fileID: 1436087928}

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using Button = UnityEngine.UI.Button;
 
 
-public class MainMenu : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     public bool simulateMobileInEditor = false;
     public GameObject quitButton;
@@ -116,5 +116,27 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit game");
+    }
+    
+    
+    /*      credits links      */
+    public void LinkSara()
+    {
+        Application.OpenURL("https://shiroexe.itch.io/");
+    }
+    
+    public void LinkNuno()
+    {
+        Application.OpenURL("https://nunobaptista57.itch.io/");
+    }
+    
+    public void LinkAfonso()
+    {
+        Application.OpenURL("https://pew-pew-tuga.itch.io/");
+    }
+    
+    public void LinkRicardo()
+    {
+        Application.OpenURL("https://mrdummyacc-dot.itch.io/");
     }
 }
