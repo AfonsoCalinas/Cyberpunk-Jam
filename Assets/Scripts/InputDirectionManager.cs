@@ -3,8 +3,15 @@ using Terresquall; // Namespace for the joystick API
 
 public static class InputDirectionManager
 {
+
+    private static bool _inputEnabled = true;
+
+    public static void EnableInput() => _inputEnabled = true;
+    public static void DisableInput() => _inputEnabled = false;
+    
     public static string GetDirectionName()
     {
+        if (!_inputEnabled) return ""; // input locked
         float h, v;
         if (VirtualJoystick.CountActiveInstances() > 0)
         {
@@ -31,6 +38,8 @@ public static class InputDirectionManager
 
     public static Vector2Int GetDirectionVector()
     {
+
+        
         float h, v;
         if (VirtualJoystick.CountActiveInstances() > 0)
         {

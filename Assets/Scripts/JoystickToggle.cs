@@ -21,15 +21,18 @@ public class JoystickToggle : MonoBehaviour
 
     private void Update()
     {
-        if (isMobile && GameManager._instance.pauseManager.isPaused)
+        if (GameManager._instance != null)
         {
-            joystick.SetActive(false);
-            // pauseButton.SetActive(false);
-        }
-        else
-        {
-            joystick.SetActive(true);
-            pauseButton.SetActive(true);
+            if (isMobile && GameManager._instance.pauseManager.isPaused)
+            {
+                joystick.SetActive(false);
+                // pauseButton.SetActive(false);
+            }
+            else
+            {
+                joystick.SetActive(true);
+                pauseButton.SetActive(true);
+            }
         }
     }
 }

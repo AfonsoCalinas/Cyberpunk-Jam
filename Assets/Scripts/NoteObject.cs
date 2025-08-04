@@ -27,12 +27,25 @@ public class NoteObject : MonoBehaviour
 
         if (_canBePressed && InputDirectionManager.GetDirectionName() == _direction)
         {
-            GameManager._instance.NoteHit();
-            
-            if (GameManager._instance.particleEffectController != null)
+            if (GameManager._instance != null)
             {
-                GameManager._instance.particleEffectController.PlayParticlesForDirection(_direction);
+                GameManager._instance.NoteHit();
+            
+                if (GameManager._instance.particleEffectController != null)
+                {
+                    GameManager._instance.particleEffectController.PlayParticlesForDirection(_direction);
+                }
             }
+            else
+            {
+                TutorialManager._instance.NoteHit();
+            
+                if (TutorialManager._instance.particleEffectController != null)
+                {
+                    TutorialManager._instance.particleEffectController.PlayParticlesForDirection(_direction);
+                }
+            }
+
             
             _hasBeenPressed = true;
             gameObject.SetActive(false);
@@ -70,7 +83,15 @@ public class NoteObject : MonoBehaviour
         {
             _canBePressed = false;
             if(!_hasBeenPressed){
-                GameManager._instance.NoteMissed();
+                if (GameManager._instance != null)
+                {
+                    GameManager._instance.NoteMissed();
+                }
+                else
+                {
+                    TutorialManager._instance.NoteMissed();
+                }
+
             }
             
         }
