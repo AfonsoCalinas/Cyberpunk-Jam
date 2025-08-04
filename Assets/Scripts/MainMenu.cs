@@ -1,13 +1,24 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using Button = UnityEngine.UI.Button;
+
 
 public class MainMenu : MonoBehaviour
 {
     public bool simulateMobileInEditor = false;
     public GameObject quitButton;
     private bool _isMobile;
+    
+    
+
+    public Button[] levelButtons; // Assign these in the Inspector
+
     void Start()
-    { 
+    {
+        UpdateLevelButtons();
+        
         _isMobile = Application.isMobilePlatform;
 
 #if UNITY_EDITOR
@@ -17,6 +28,30 @@ public class MainMenu : MonoBehaviour
 
         quitButton.SetActive(!_isMobile);
     }
+
+    void UpdateLevelButtons()
+    {
+        int unlockedIndex = LevelTracker.GetUnlockedLevelIndex();
+
+        for (int i = 0; i < levelButtons.Length; i++)
+        {
+            int sceneBuildIndex = 2 + i; // Level1 starts at index 2
+
+            bool isUnlocked = sceneBuildIndex <= unlockedIndex;
+
+            levelButtons[i].interactable = isUnlocked;
+
+            ColorBlock cb = levelButtons[i].colors;
+            cb.normalColor = isUnlocked ? Color.white : Color.gray;
+            cb.highlightedColor = isUnlocked ? Color.white : Color.gray;
+            cb.pressedColor = isUnlocked ? Color.white : Color.gray;
+            levelButtons[i].colors = cb;
+
+            // Optionally disable text or icon effects
+            // levelButtons[i].GetComponentInChildren<Text>().color = isUnlocked ? Color.white : Color.gray;
+        }
+    }
+
     
     /*public void Level1()
     {
@@ -45,19 +80,41 @@ public class MainMenu : MonoBehaviour
 
         int buildIndex = baseIndex + (levelNumber - 1);
 
-        if (buildIndex < SceneManager.sceneCountInBuildSettings)
+        int unlockedIndex = LevelTracker.GetUnlockedLevelIndex();
+
+        if (buildIndex <= unlockedIndex)
         {
-            SceneManager.LoadScene(buildIndex);
+            if (buildIndex < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(buildIndex);
+            }
+            else
+            {
+                Debug.LogWarning("Invalid level number.");
+            }
         }
         else
         {
-            Debug.LogWarning("Invalid level number.");
+            Debug.Log("Level is locked.");
+            // Optionally show UI feedback here (e.g. sound or popup)
         }
     }
 
-
+    public void OnPlayButtonPressed()
+    {
+        int unlockedIndex = LevelTracker.GetUnlockedLevelIndex();
+        SceneManager.LoadScene(unlockedIndex);
+    }
+    
+    public void OnResetProgressPressed()
+    {
+        LevelTracker.ResetProgress();
+        Debug.Log("Progress reset.");
+    }
+    
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("Quit game");
     }
 }

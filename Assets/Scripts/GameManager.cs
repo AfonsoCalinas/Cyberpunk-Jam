@@ -267,6 +267,7 @@ public class GameManager : MonoBehaviour
         else
         {
             LevelTracker.OnLevelCompleted();
+            LevelTracker.UnlockNextLevel();
             SceneManager.LoadScene("VictoryScene");
         }
     }
