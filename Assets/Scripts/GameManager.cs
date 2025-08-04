@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text _hpBarUpgradeText;
     public Slider _healthBar;
     public RectTransform _healthBarRect;
-    public TMP_Text _clickAnyButtonText;
+    public GameObject _clickAnyButton;
+    public TextMeshProUGUI levelTitle;
     public float _health = 1f;
     public float hitHealAmount = 0.05f;
     public float missDamageAmount = 0.1f;
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
 
         _startMusic = false;
 
-        _clickAnyButtonText.gameObject.SetActive(true);
+        _clickAnyButton.SetActive(true);
 
         _currentScoreText.text = "Score\n0";
 
@@ -69,13 +70,14 @@ public class GameManager : MonoBehaviour
             progressBar.minValue = 0;
             progressBar.maxValue = _music.clip.length;
         }
+        UpdateLevelTitle();
     }
 
     void Update()
     {
         if (!_startMusic && Input.anyKeyDown)
         {
-            _clickAnyButtonText.gameObject.SetActive(false);
+            _clickAnyButton.SetActive(false);
 
             _startMusic = true;
 
@@ -107,6 +109,21 @@ public class GameManager : MonoBehaviour
     }
 #endif
 
+
+    public void UpdateLevelTitle()
+    {
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Assuming your levels start at build index 2 (MainMenu = 0, Tutorial = 1, Level 1 = 2)
+        int levelNumber = buildIndex - 1;
+        
+
+        if (levelTitle != null)
+        {
+            levelTitle.SetText("Level " + levelNumber);
+        }
+    }
+    
     public void NoteHit()
     {
         Debug.Log("Hit on time");
