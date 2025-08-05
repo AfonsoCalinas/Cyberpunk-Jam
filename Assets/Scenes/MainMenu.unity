@@ -6190,10 +6190,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 4386465692437926888}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.01
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -6580,6 +6580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7473408028113168436}
+  - component: {fileID: 7473408028113168437}
   m_Layer: 0
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -6800,10 +6801,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1270934125678772303}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.01
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -7116,10 +7117,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 546183911075225963}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.01
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -7170,6 +7171,21 @@ Transform:
   - {fileID: 1732513096406732120}
   m_Father: {fileID: 1626812356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7473408028113168437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039692538991458961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f057f2c1c021f4dbf2f7819c5e0de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterSlider: {fileID: 1418958641187688294}
+  musicSlider: {fileID: 7315425899514536028}
+  soundfxSlider: {fileID: 4676187347830188179}
 --- !u!1 &7539950775040223583
 GameObject:
   m_ObjectHideFlags: 0
