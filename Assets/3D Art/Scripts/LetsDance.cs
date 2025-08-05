@@ -5,7 +5,7 @@ public class LetsDance : MonoBehaviour
     public Animator characterAnimator;
 
     public float retriggerDelay = 0.5f;
-    private float _retriggerTimer = 0f;
+    private float _retriggerTimer;
 
     
     private string _currentDirection = ""; // track last input

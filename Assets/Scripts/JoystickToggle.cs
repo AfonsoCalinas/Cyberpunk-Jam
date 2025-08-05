@@ -21,7 +21,7 @@ public class JoystickToggle : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager._instance != null)
+        if (GameManager._instance)
         {
             if (isMobile && GameManager._instance.pauseManager.isPaused)
             {

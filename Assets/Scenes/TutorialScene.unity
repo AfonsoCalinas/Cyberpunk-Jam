@@ -5743,7 +5743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2130996f5f46229428dee9fdf619cf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simulateMobileInEditor: 1
+  simulateMobileInEditor: 0
   joystick: {fileID: 1126497324}
   pauseButton: {fileID: 837561305}
 --- !u!114 &930225077

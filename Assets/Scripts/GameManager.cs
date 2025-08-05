@@ -279,6 +279,7 @@ public class GameManager : MonoBehaviour
 
         if (currentIndex == fourthFromLastIndex)
         {
+            LevelTracker.OnLevelCompleted();
             SceneManager.LoadScene("GameCompleteScene");
         }
         else

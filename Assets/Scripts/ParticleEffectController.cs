@@ -5,7 +5,7 @@ public class ParticleEffectController : MonoBehaviour
 {
     public ParticleSystem[] directionParticles = new ParticleSystem[9];
 
-    private Dictionary<string, int> inputToIndex = new Dictionary<string, int>
+    private readonly Dictionary<string, int> _inputToIndex = new Dictionary<string, int>
     {
         { "WA", 0 },
         { "W", 1 },
@@ -20,7 +20,7 @@ public class ParticleEffectController : MonoBehaviour
 
     public void PlayParticlesForDirection(string dir)
     {
-        if (inputToIndex.TryGetValue(dir, out int index) && index >= 0 && index < directionParticles.Length)
+        if (_inputToIndex.TryGetValue(dir, out int index) && index >= 0 && index < directionParticles.Length)
         {
             directionParticles[index].Play();
         }
