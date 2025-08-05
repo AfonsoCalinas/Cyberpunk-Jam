@@ -6,7 +6,7 @@ public class VictoryManager : MonoBehaviour
 {
     public void NextHack()
     {
-        int nextLevelIndex = LevelTracker.lastLevelIndex + 1;
+        int nextLevelIndex = LevelTracker.LastLevelIndex + 1;
 
         SceneManager.LoadScene(nextLevelIndex);
     }

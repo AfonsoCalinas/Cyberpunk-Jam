@@ -35,20 +35,32 @@ public class MenuManager : MonoBehaviour
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
-            int sceneBuildIndex = 2 + i; // Level1 starts at index 2
+            int sceneBuildIndex = 1 + i; // Level1 starts at index 2
 
             bool isUnlocked = sceneBuildIndex <= unlockedIndex;
-
+            bool isCompleted = LevelTracker.IsLevelCompleted(sceneBuildIndex);
+            
             levelButtons[i].interactable = isUnlocked;
 
             ColorBlock cb = levelButtons[i].colors;
             cb.normalColor = isUnlocked ? Color.white : Color.gray;
-            cb.highlightedColor = isUnlocked ? Color.white : Color.gray;
-            cb.pressedColor = isUnlocked ? Color.white : Color.gray;
+            cb.highlightedColor = isUnlocked ? Color.lightGray : Color.gray;
+            cb.pressedColor = isUnlocked ? Color.lightBlue : Color.gray;
             levelButtons[i].colors = cb;
 
             // Optionally disable text or icon effects
             // levelButtons[i].GetComponentInChildren<Text>().color = isUnlocked ? Color.white : Color.gray;
+            
+            if (isCompleted)
+            {
+                // Example 1: Change button color
+                ColorBlock colors = levelButtons[i].colors;
+                colors.normalColor = Color.purple;
+                levelButtons[i].colors = colors;
+
+                // Example 2: Add a checkmark or trophy icon if you use UI Image or text
+                // button.GetComponentInChildren<Text>().text += " ✓";
+            }
         }
     }
 
@@ -110,6 +122,7 @@ public class MenuManager : MonoBehaviour
     {
         LevelTracker.ResetProgress();
         Debug.Log("Progress reset.");
+        UpdateLevelButtons();
     }
     
     public void QuitGame()

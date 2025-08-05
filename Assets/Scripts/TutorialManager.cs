@@ -68,7 +68,7 @@ public class TutorialManager : MonoBehaviour
     public ParticleEffectController particleEffectController;
     
     private Coroutine noteSpawnerCoroutine;
- 
+
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -141,8 +141,10 @@ public class TutorialManager : MonoBehaviour
 
     void SwitchStep()
     {
+        
         switch (_step)
         {
+            
             case 1:
                 /*show the keys you have to press*/
                 speak1.SetActive(false);
@@ -249,13 +251,17 @@ public class TutorialManager : MonoBehaviour
                 arrowTooltip3.SetActive(false);
                 _hpPlusUpgradeText.gameObject.SetActive(false);
                 _hpBarUpgradeText.gameObject.SetActive(false);
+
                 break;
             case 7:
                 speak6.SetActive(false);
                 speak7.SetActive(true);
+
                 break;
             case 8:
                 // SceneManager.LoadScene("Level1Scene");
+                LevelTracker.OnLevelCompleted();
+                LevelTracker.UnlockNextLevel();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
                 break;
         }

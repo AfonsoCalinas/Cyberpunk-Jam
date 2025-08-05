@@ -28,7 +28,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Boolean: 1
-    - _SwitchLight: 0.21500403
+    - _SwitchLight: 1
     m_Colors:
     - _Color: {r: 1.7932897, g: 0.8751254, b: 0.07173163, a: 0}
   m_BuildTextureStacks: []
