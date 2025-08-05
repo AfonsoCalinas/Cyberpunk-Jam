@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Button = UnityEngine.UI.Button;
+using TMPro;
 
 
 public class MenuManager : MonoBehaviour
@@ -10,6 +11,10 @@ public class MenuManager : MonoBehaviour
     public bool simulateMobileInEditor = false;
     public GameObject quitButton;
     private bool _isMobile;
+    
+    public TMP_FontAsset unlockedFontAsset;
+    public TMP_FontAsset lockedFontAsset;
+    public TMP_FontAsset completedFontAsset; 
     
     
 
@@ -43,19 +48,30 @@ public class MenuManager : MonoBehaviour
             levelButtons[i].interactable = isUnlocked;
 
             ColorBlock cb = levelButtons[i].colors;
-            cb.normalColor = isUnlocked ? Color.white : Color.gray;
-            cb.highlightedColor = isUnlocked ? Color.lightGray : Color.gray;
-            cb.pressedColor = isUnlocked ? Color.lightBlue : Color.gray;
+            cb.normalColor = isUnlocked ? Color.HSVToRGB(0,0,0.9f,true) : Color.HSVToRGB(0, 0, 0.2f,true); ;
+            cb.highlightedColor = isUnlocked ? Color.HSVToRGB(0,0,1,true) : Color.HSVToRGB(0, 0, 0.3f,true);;
+            cb.pressedColor = isUnlocked ? Color.HSVToRGB(0, 0, 0.75f, true) : Color.HSVToRGB(0, 0, 0.2f,true);
             levelButtons[i].colors = cb;
 
-            // Optionally disable text or icon effects
-            // levelButtons[i].GetComponentInChildren<Text>().color = isUnlocked ? Color.white : Color.gray;
+            // 🔠 Change font asset
+            TextMeshProUGUI tmpText = levelButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+            if (tmpText != null)
+            {
+                if (isCompleted && completedFontAsset != null)
+                    tmpText.font = completedFontAsset;
+                else if (isUnlocked && unlockedFontAsset != null)
+                    tmpText.font = unlockedFontAsset;
+                else if (!isUnlocked && lockedFontAsset != null)
+                    tmpText.font = lockedFontAsset;
+            }
             
             if (isCompleted)
             {
                 // Example 1: Change button color
                 ColorBlock colors = levelButtons[i].colors;
-                colors.normalColor = Color.purple;
+                colors.normalColor = Color.HSVToRGB(.12f,1f,0.9f,true);
+                colors.highlightedColor = Color.HSVToRGB(.12f,.5f,1f,true);
+                colors.pressedColor = Color.HSVToRGB(.12f,1f,0.9f,true);
                 levelButtons[i].colors = colors;
 
                 // Example 2: Add a checkmark or trophy icon if you use UI Image or text
