@@ -34,6 +34,19 @@ public class JoystickToggle : MonoBehaviour
                 pauseButton.SetActive(true);
             }
         }
+        else
+        {
+            if (isMobile && TutorialManager._instance.pauseManager.isPaused)
+            {
+                joystick.SetActive(false);
+                // pauseButton.SetActive(false);
+            }
+            else
+            {
+                joystick.SetActive(true);
+                pauseButton.SetActive(true);
+            }
+        }
     }
 }
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,11 @@ public class PauseManager : MonoBehaviour
     public AudioSource musicSource;
 
     public bool isPaused = false;
+
+    private void Start()
+    {
+        pauseMenuUI.SetActive(false);
+    }
 
     void Update()
     {

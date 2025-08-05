@@ -68,12 +68,14 @@ public class TutorialManager : MonoBehaviour
     public ParticleEffectController particleEffectController;
     
     private Coroutine noteSpawnerCoroutine;
-
+    public PauseManager pauseManager;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _instance = this;
+        
         speak1.SetActive(true);
         speak1m.SetActive(false);
         speak2.SetActive(false);
@@ -98,7 +100,6 @@ public class TutorialManager : MonoBehaviour
         
         _dancerMat.SetFloat("_Expression", 0);
         
-        _instance = this;
 
 
         _currentScoreText.text = "Score\n0";
