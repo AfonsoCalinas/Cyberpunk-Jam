@@ -60,7 +60,7 @@ public static class InputDirectionManager
 
     public static bool IsDiagonal()
     {
-        Vector2Int dir = GetDirectionVector();
+        var dir = GetDirectionVector();
         return dir.x != 0 && dir.y != 0;
     }
 }

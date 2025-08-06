@@ -129,8 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBePressed: 0
   activatorTag: DownRight
-  _speed: 200
-  _direction: SD
+  speed: 200
+  direction: SD
 --- !u!1 &6059909064373542780
 GameObject:
   m_ObjectHideFlags: 0

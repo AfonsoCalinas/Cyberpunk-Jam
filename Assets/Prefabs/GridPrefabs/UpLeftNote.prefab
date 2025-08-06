@@ -128,8 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBePressed: 0
   activatorTag: UpLeft
-  _speed: 200
-  _direction: WA
+  speed: 200
+  direction: WA
 --- !u!1001 &1410449355483957418
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ public class GameOverManager : MonoBehaviour
 {
     public void Retry()
     {
-        int nextLevelIndex = LevelTracker.LastLevelIndex +1;
+        var nextLevelIndex = LevelTracker.LastLevelIndex +1;
 
         SceneManager.LoadScene(nextLevelIndex);
     }

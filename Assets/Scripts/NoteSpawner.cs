@@ -32,7 +32,7 @@ public class NoteSpawner : MonoBehaviour
             NoteObject noteScript = note.GetComponent<NoteObject>();
             if (noteScript != null)
             {
-                noteScript._speed = noteSpeed;
+                noteScript.speed = noteSpeed;
             }
         }
         else if (nLane == 1)
@@ -50,7 +50,7 @@ public class NoteSpawner : MonoBehaviour
             NoteObject noteScript = note.GetComponent<NoteObject>();
             if (noteScript != null)
             {
-                noteScript._speed = noteSpeed;
+                noteScript.speed = noteSpeed;
             }
         }
         else
@@ -68,7 +68,7 @@ public class NoteSpawner : MonoBehaviour
             NoteObject noteScript = note.GetComponent<NoteObject>();
             if (noteScript != null)
             {
-                noteScript._speed = noteSpeed;
+                noteScript.speed = noteSpeed;
             }
         }
     }

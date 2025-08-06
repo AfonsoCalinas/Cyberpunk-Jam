@@ -6,43 +6,42 @@ public class NoteObject : MonoBehaviour
     private bool _hasBeenPressed;
     public string activatorTag = "Activator";
 
+
     [Header("Movement Settings")]
-    [SerializeField] public float _speed = 50f; // Units per second
-    public string _direction;
+    [SerializeField] public float speed = 200f; // Units per second
+    public string direction;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Move upward
-        transform.Translate(_speed * Time.deltaTime * Vector3.up, Space.World);
+        transform.Translate(speed * Time.deltaTime * Vector3.up, Space.World);
 
         // string inputDir = GetInputDirection();
 
-        if (canBePressed && InputDirectionManager.GetDirectionName() == _direction)
+        if (!canBePressed || InputDirectionManager.GetDirectionName() != direction) return;
+        if (GameManager._instance != null)
         {
-            if (GameManager._instance != null)
-            {
-                GameManager._instance.NoteHit();
+            GameManager._instance.NoteHit();
             
-                if (GameManager._instance.particleEffectController != null)
-                {
-                    GameManager._instance.particleEffectController.PlayParticlesForDirection(_direction);
-                }
-            }
-            else
+            if (GameManager._instance.particleEffectController != null)
             {
-                TutorialManager._instance.NoteHit();
-            
-                if (TutorialManager._instance.particleEffectController != null)
-                {
-                    TutorialManager._instance.particleEffectController.PlayParticlesForDirection(_direction);
-                }
+                GameManager._instance.particleEffectController.PlayParticlesForDirection(direction);
             }
+        }
+        else
+        {
+            TutorialManager._instance.NoteHit();
+            
+            if (TutorialManager._instance.particleEffectController != null)
+            {
+                TutorialManager._instance.particleEffectController.PlayParticlesForDirection(direction);
+            }
+        }
 
             
-            _hasBeenPressed = true;
-            gameObject.SetActive(false);
-        }
+        _hasBeenPressed = true;
+        gameObject.SetActive(false);
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -57,16 +56,14 @@ public class NoteObject : MonoBehaviour
     {
         if (!other.CompareTag(activatorTag)) return;
         canBePressed = false;
-        if(!_hasBeenPressed){
-            if (GameManager._instance != null)
-            {
-                GameManager._instance.NoteMissed();
-            }
-            else
-            {
-                TutorialManager._instance.NoteMissed();
-            }
-
+        if (_hasBeenPressed) return;
+        if (GameManager._instance != null)
+        {
+            GameManager._instance.NoteMissed();
+        }
+        else
+        {
+            TutorialManager._instance.NoteMissed();
         }
     }
 }

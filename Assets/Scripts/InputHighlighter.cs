@@ -51,7 +51,7 @@ public class InputHighlighter : MonoBehaviour
             _lastHighlighted = toHighlight;
         }
 
-        if (_activeNote && _directionName == _activeNote._direction)
+        if (_activeNote && _directionName == _activeNote.direction)
         {
             GameManager._instance.NoteHit();
             Destroy(_activeNote.gameObject);
