@@ -4,14 +4,14 @@ using System.Collections;
 public class FloorTile : MonoBehaviour
 {
     public Material tileMaterial;
-    private Coroutine currentCoroutine;
+    private Coroutine _currentCoroutine;
 
     public void ActivateTile(float maxValue = 1f, float duration = 0.3f)
     {
-        if (currentCoroutine != null)
-            StopCoroutine(currentCoroutine);
+        if (_currentCoroutine != null)
+            StopCoroutine(_currentCoroutine);
 
-        currentCoroutine = StartCoroutine(SmoothSwitch(maxValue, duration));
+        _currentCoroutine = StartCoroutine(SmoothSwitch(maxValue, duration));
     }
 
     private IEnumerator SmoothSwitch(float targetValue, float duration)

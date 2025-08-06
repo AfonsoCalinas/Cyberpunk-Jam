@@ -1,22 +1,14 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class NoteObject : MonoBehaviour
 {
     public bool canBePressed;
-    private bool _hasBeenPressed = false;
+    private bool _hasBeenPressed;
     public string activatorTag = "Activator";
 
     [Header("Movement Settings")]
     [SerializeField] public float _speed = 50f; // Units per second
     public string _direction;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

@@ -36,11 +36,13 @@ public class InputHighlighter : MonoBehaviour
                 _buttonDict.Add(mapping.direction, mapping.button);
             }
         }
-        _directionName = InputDirectionManager.GetDirectionName();
+        /*_directionName = InputDirectionManager.GetDirectionName();*/
     }
 
     private void Update()
     {
+        _directionName = InputDirectionManager.GetDirectionName();
+        
         Button toHighlight = GetButtonForInput(_directionName);
 
         if (toHighlight != _lastHighlighted)

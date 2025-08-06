@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LetsDance : MonoBehaviour
 {
-    private static readonly int IsDancing = Animator.StringToHash("isDancing");
+    // private static readonly int IsDancing = Animator.StringToHash("isDancing");
     private static readonly int Win = Animator.StringToHash("Win");
     private static readonly int Lose = Animator.StringToHash("Lose");
     public Animator characterAnimator;
@@ -46,7 +46,7 @@ public class LetsDance : MonoBehaviour
         bool isInputActive = !string.IsNullOrEmpty(direction);
 
         // Update IsDancing
-        characterAnimator.SetBool(IsDancing, isInputActive);
+        // characterAnimator.SetBool(IsDancing, isInputActive);
 
         if (isInputActive)
         {

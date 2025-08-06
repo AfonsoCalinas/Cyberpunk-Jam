@@ -7,7 +7,7 @@ public class DanceFloorController : MonoBehaviour
 {
     public FloorTile[] tiles; // Fill with 9 tiles in the Inspector // For tiles 0-8 except 4
     public IdleFloorTile idleTile;    // Reference to tile 4
-    private bool inputLocked = false;
+    private bool _inputLocked = false;
     public float inputCooldown = 0.25f; // prevent firing every frame
 
     void Update()
@@ -19,7 +19,7 @@ public class DanceFloorController : MonoBehaviour
             // No input — keep idle tile on
             idleTile.TurnOn();
         }
-        else if (!inputLocked)
+        else if (!_inputLocked)
         {
             idleTile.TurnOff(); // turn off center
 
@@ -41,8 +41,8 @@ public class DanceFloorController : MonoBehaviour
 
     System.Collections.IEnumerator InputCooldown()
     {
-        inputLocked = true;
+        _inputLocked = true;
         yield return new WaitForSeconds(inputCooldown);
-        inputLocked = false;
+        _inputLocked = false;
     }
 }
