@@ -36,7 +36,6 @@ public class InputHighlighter : MonoBehaviour
                 _buttonDict.Add(mapping.direction, mapping.button);
             }
         }
-        /*_directionName = InputDirectionManager.GetDirectionName();*/
     }
 
     private void Update()

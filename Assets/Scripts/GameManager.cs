@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
 {
 
     public AudioSource _music;
-    public static bool _startMusic;
+    private static bool _startMusic;
     public static GameManager _instance;
+    private static readonly int Expression = Shader.PropertyToID("_Expression");
     private int _currentScore = 0;
     private int _scoreMultiplier = 1;
     private const int ScorePerNote = 300;
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
     public float _health = 1f;
     public float hitHealAmount = 0.05f;
     public float missDamageAmount = 0.1f;
-    private bool sceneScheduled = false;
+    private bool _sceneScheduled = false;
     public Canvas _canvas;
     public GameObject _perfectPopupText;
     public GameObject _missPopupText;
@@ -39,14 +40,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip badSound;
 
     public Material _dancerMat;
-    private float waitTime = 2f;
-    
+    private const float WaitTime = 2f;
+
     public Slider progressBar;
     public ParticleEffectController particleEffectController;
     public PauseManager pauseManager;
     void Start()
     {
-        _dancerMat.SetFloat("_Expression", 0);
+        _dancerMat.SetFloat(Expression, 0);
         
         
         _instance = this;
@@ -94,7 +95,6 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("[DEBUG] Skipping to end of level.");
             SimulateWin();
         }
 #endif
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
     
     
 #if UNITY_EDITOR
-    void SimulateWin()
+    private void SimulateWin()
     {
         // Call your normal level-win logic here
         GoToVictoryScene();
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
 #endif
 
 
-    public void UpdateLevelTitle()
+    private void UpdateLevelTitle()
     {
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
 
@@ -145,22 +145,22 @@ public class GameManager : MonoBehaviour
             _health = Mathf.Clamp01(_health + 0.5f);
             _healthBar.value = _health;
 
-            StartCoroutine(ShowHPPlusUpgradeText());
+            StartCoroutine(ShowHpPlusUpgradeText());
 
-            _dancerMat.SetFloat("_Expression", 3);
+            _dancerMat.SetFloat(Expression, 3);
             if (_combo == 40)
             {
                 StartCoroutine(ResizeHealthBar(50f, 0.3f));
-                StartCoroutine(ShowHPBarUpgradeText());
-                _dancerMat.SetFloat("_Expression", 4);
+                StartCoroutine(ShowHpBarUpgradeText());
+                _dancerMat.SetFloat(Expression, 4);
             }
         }
         else
         {
-            _dancerMat.SetFloat("_Expression", 2); 
+            _dancerMat.SetFloat(Expression, 2); 
             
 
-            Invoke("HoldExpression", waitTime);
+            Invoke(nameof(HoldExpression), WaitTime);
         }
 
         _currentScore += ScorePerNote * _scoreMultiplier;
@@ -175,8 +175,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Missed!");
 
-        _dancerMat.SetFloat("_Expression", 1);
-        Invoke("HoldExpression", waitTime);
+        _dancerMat.SetFloat(Expression, 1);
+        Invoke(nameof(HoldExpression), WaitTime);
         
         // SpawnFloatingText(_missPopupText, new Vector2(-220, 197));
         SpawnFloatingText(_missPopupText, _missPosition);
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
 
         if (_health <= 0f)
         {
-            _dancerMat.SetFloat("_Expression", 1);
+            _dancerMat.SetFloat(Expression, 1);
             Debug.Log("Game Over!");
             SceneManager.LoadScene("GameOverScene");
         }
@@ -205,19 +205,19 @@ public class GameManager : MonoBehaviour
     private void HoldExpression()
     {
         
-        _dancerMat.SetFloat("_Expression", 0);
+        _dancerMat.SetFloat(Expression, 0);
         // return null;
 
     }
     
-    private IEnumerator ShowHPPlusUpgradeText()
+    private IEnumerator ShowHpPlusUpgradeText()
     {
         _hpPlusUpgradeText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         _hpPlusUpgradeText.gameObject.SetActive(false);
     }
 
-    private IEnumerator ShowHPBarUpgradeText()
+    private IEnumerator ShowHpBarUpgradeText()
     {
         _hpBarUpgradeText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
@@ -227,13 +227,13 @@ public class GameManager : MonoBehaviour
     private IEnumerator ResizeHealthBar(float delta, float duration)
     {
         RectTransform rt = _healthBar.GetComponent<RectTransform>();
-        float initialWidth = rt.rect.width;
-        float targetWidth = initialWidth + delta;
-        float elapsed = 0f;
+        var initialWidth = rt.rect.width;
+        var targetWidth = initialWidth + delta;
+        var elapsed = 0f;
 
         while (elapsed < duration)
         {
-            float newWidth = Mathf.Lerp(initialWidth, targetWidth, elapsed / duration);
+            var newWidth = Mathf.Lerp(initialWidth, targetWidth, elapsed / duration);
             rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
             elapsed += Time.deltaTime;
             yield return null;
@@ -242,32 +242,19 @@ public class GameManager : MonoBehaviour
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth);
     }
 
-    void ScheduleSceneTransition()
+    private void ScheduleSceneTransition()
     {
-        if (_music.clip != null && !sceneScheduled)
+        if (_music.clip != null && !_sceneScheduled)
         {
             float delay = Mathf.Max(_music.clip.length - 5f, 0f);
-            sceneScheduled = true;
+            _sceneScheduled = true;
             Invoke("GoToVictoryScene", delay);
         }
     }
 
-    void GoToVictoryScene()
+    private void GoToVictoryScene()
     {
-        _dancerMat.SetFloat("_Expression", 4);
-        
-        /*string currentScenePath = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);
-        string currentSceneName = Path.GetFileNameWithoutExtension(currentScenePath);
-
-        if (currentSceneName == "Level4Scene")
-        {
-            SceneManager.LoadScene("GameCompleteScene");
-        }
-        else
-        {
-            LevelTracker.OnLevelCompleted();
-            SceneManager.LoadScene("VictoryScene");
-        }*/
+        _dancerMat.SetFloat(Expression, 4);
         
         var currentIndex = SceneManager.GetActiveScene().buildIndex;
         var totalScenes = SceneManager.sceneCountInBuildSettings;
@@ -277,20 +264,19 @@ public class GameManager : MonoBehaviour
         
         // var fourthFromLastIndex = totalScenes;
 
+        LevelTracker.OnLevelCompleted();
         if (currentIndex == fourthFromLastIndex)
         {
-            LevelTracker.OnLevelCompleted();
             SceneManager.LoadScene("GameCompleteScene");
         }
         else
         {
-            LevelTracker.OnLevelCompleted();
             LevelTracker.UnlockNextLevel();
             SceneManager.LoadScene("VictoryScene");
         }
     }
 
-    public void SpawnFloatingText(GameObject popupText, Vector3 screenPosition)
+    private void SpawnFloatingText(GameObject popupText, Vector3 screenPosition)
     {
         GameObject instance = Instantiate(popupText, _canvas.transform);
         instance.GetComponent<RectTransform>().position = screenPosition;
