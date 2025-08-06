@@ -3668,15 +3668,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81310b0a063c27b4c8c8dcafdd7a0392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topLeft: {fileID: 4451634576984670828}
-  _topMiddle: {fileID: 8316869017877067603}
-  _topRight: {fileID: 8967171081616952080}
-  _midLeft: {fileID: 3207322205861224146}
-  _midMiddle: {fileID: 6283643941221503289}
-  _midRight: {fileID: 8462984577115721610}
-  _bottomLeft: {fileID: 5922640657132976689}
-  _bottomMiddle: {fileID: 6379788574196223103}
-  _bottomRight: {fileID: 7042886944522642497}
+  buttonMappings:
+  - direction: WA
+    button: {fileID: 4451634576984670828}
+  - direction: W
+    button: {fileID: 8316869017877067603}
+  - direction: WD
+    button: {fileID: 8967171081616952080}
+  - direction: A
+    button: {fileID: 3207322205861224146}
+  - direction: Default
+    button: {fileID: 6283643941221503289}
+  - direction: D
+    button: {fileID: 8462984577115721610}
+  - direction: SA
+    button: {fileID: 5922640657132976689}
+  - direction: S
+    button: {fileID: 6379788574196223103}
+  - direction: SD
+    button: {fileID: 7042886944522642497}
   hitSound: {fileID: 8300000, guid: e1ede50661e46ba45b0ae6053055c8f7, type: 3}
 --- !u!1 &4338020299236222641
 GameObject:

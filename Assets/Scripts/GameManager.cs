@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using System.IO;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static GameManager _instance;
     private int _currentScore = 0;
     private int _scoreMultiplier = 1;
-    private int _scorePerNote = 300;
+    private const int ScorePerNote = 300;
     private int _combo = 0;
     public TMP_Text _currentScoreText;
     public TMP_Text _scoreMultiplierText;
@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
             Invoke("HoldExpression", waitTime);
         }
 
-        _currentScore += _scorePerNote * _scoreMultiplier;
+        _currentScore += ScorePerNote * _scoreMultiplier;
         _currentScoreText.text = "Score\n" + _currentScore;
 
         Debug.Log(_currentScore);

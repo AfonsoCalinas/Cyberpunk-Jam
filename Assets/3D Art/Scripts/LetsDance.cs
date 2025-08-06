@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class LetsDance : MonoBehaviour
 {
+    private static readonly int IsDancing = Animator.StringToHash("isDancing");
+    private static readonly int Win = Animator.StringToHash("Win");
+    private static readonly int Lose = Animator.StringToHash("Lose");
     public Animator characterAnimator;
 
     public float retriggerDelay = 0.5f;
@@ -21,12 +24,12 @@ public class LetsDance : MonoBehaviour
     {
         if (wining)
         {
-            characterAnimator.SetBool("Win", true);
+            characterAnimator.SetBool(Win, true);
         }
 
         if (losing)
         {
-            characterAnimator.SetBool("Lose", true);
+            characterAnimator.SetBool(Lose, true);
         }
     }
     
@@ -43,7 +46,7 @@ public class LetsDance : MonoBehaviour
         bool isInputActive = !string.IsNullOrEmpty(direction);
 
         // Update IsDancing
-        characterAnimator.SetBool("IsDancing", isInputActive);
+        characterAnimator.SetBool(IsDancing, isInputActive);
 
         if (isInputActive)
         {

@@ -1,18 +1,23 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InputHighlighter : MonoBehaviour
 {
-    [Header("Buttons")]
-    public Button _topLeft;
-    public Button _topMiddle;
-    public Button _topRight;
-    public Button _midLeft;
-    public Button _midMiddle;
-    public Button _midRight;
-    public Button _bottomLeft;
-    public Button _bottomMiddle;
-    public Button _bottomRight;
+    [System.Serializable]
+    public struct ButtonDirection
+    {
+        public string direction;
+        public Button button;
+    }
+    
+    [Header("Directional Buttons")]
+    [Tooltip("Directional Buttons list, where you can add direction strings like \"W\", \"WA\", etc., and drag in the corresponding Button objects.\n\nMake sure you also add a fallback mapping:\n\nDirection: \"Default\"\n\nButton: your default _midMiddle button")]
+    public ButtonDirection[] buttonMappings;
+    
+    
+    private Dictionary<string, Button> _buttonDict;
+    
 
     private Button _lastHighlighted;
     private NoteObject _activeNote;
@@ -22,15 +27,21 @@ public class InputHighlighter : MonoBehaviour
 
     private void Awake()
     {
+        // Initialize dictionary
+        _buttonDict = new Dictionary<string, Button>();
+        foreach (var mapping in buttonMappings)
+        {
+            if (!_buttonDict.ContainsKey(mapping.direction))
+            {
+                _buttonDict.Add(mapping.direction, mapping.button);
+            }
+        }
         _directionName = InputDirectionManager.GetDirectionName();
     }
 
     private void Update()
     {
-        // Vector2 input = InputDirectionManager.GetDirectionVector();
-        
         Button toHighlight = GetButtonForInput(_directionName);
-        // Button toHighlight = GetButtonForInput(input);
 
         if (toHighlight != _lastHighlighted)
         {
@@ -42,46 +53,19 @@ public class InputHighlighter : MonoBehaviour
         if (_activeNote && _directionName == _activeNote._direction)
         {
             GameManager._instance.NoteHit();
-
-            // destroy note
             Destroy(_activeNote.gameObject);
+            Debug.Log("note destroyed");
             _activeNote = null;
         }
     }
 
     private Button GetButtonForInput(string directionName)
     {
-        return directionName switch
-        {
-            "WA" => _topLeft,
-            "W" => _topMiddle,
-            "WS" => _topRight,
-            "A" => _midLeft,
-            "D" => _midRight,
-            "SA" => _bottomLeft,
-            "S" => _bottomMiddle,
-            "SD" => _bottomRight,
-            _ => _midMiddle
-        };
+        return _buttonDict.TryGetValue(directionName, out var btn) ? btn : _buttonDict.GetValueOrDefault("Default", null);
+
     }
-    
-    /*Button GetButtonForInput(Vector2 input)
-    {
-        if (input == Vector2.zero) return _midMiddle;
 
-        if (input.x == -1 && input.y == 1) return _topLeft;
-        if (input.x == 0 && input.y == 1) return _topMiddle;
-        if (input.x == 1 && input.y == 1) return _topRight;
-        if (input.x == -1 && input.y == 0) return _midLeft;
-        if (input.x == 1 && input.y == 0) return _midRight;
-        if (input.x == -1 && input.y == -1) return _bottomLeft;
-        if (input.x == 0 && input.y == -1) return _bottomMiddle;
-        if (input.x == 1 && input.y == -1) return _bottomRight;
-
-        return _midMiddle;
-    }*/
-
-    void HighlightButton(Button btn)
+    private void HighlightButton(Button btn)
     {
         if (btn)
         {
@@ -94,15 +78,9 @@ public class InputHighlighter : MonoBehaviour
         SoundFXManager.instance.PlaySoundFXClip(hitSound, transform, .1f);
     }
 
-    void ResetAllButtons()
+    private void ResetAllButtons()
     {
-        Button[] allButtons = {
-            _topLeft, _topMiddle, _topRight,
-            _midLeft, _midMiddle, _midRight,
-            _bottomLeft, _bottomMiddle, _bottomRight
-        };
-
-        foreach (Button btn in allButtons)
+        foreach (Button btn in _buttonDict.Values)
         {
             if (btn)
             {
@@ -113,7 +91,7 @@ public class InputHighlighter : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (_activeNote == null && other.TryGetComponent(out NoteObject note) &&
             other.CompareTag(note.activatorTag))
@@ -122,12 +100,12 @@ public class InputHighlighter : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (_activeNote != null && other.CompareTag(_activeNote.activatorTag))
         {
             _activeNote = null;
-            Debug.Log("note destroyed");
+
         }
     }
 }

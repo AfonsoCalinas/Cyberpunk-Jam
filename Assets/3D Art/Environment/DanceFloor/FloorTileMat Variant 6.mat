@@ -27,7 +27,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _SwitchLight: 1
+    - _SwitchLight: 0.25158638
     m_Colors:
     - _Color: {r: 1.7932897, g: 0.86541283, b: 0.07173163, a: 0}
   m_BuildTextureStacks: []
