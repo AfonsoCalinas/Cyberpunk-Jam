@@ -12,7 +12,7 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Native parameters")]
     public GameObject speak1;
-    public GameObject speak1m;
+    public GameObject speak1M;
     public GameObject speak2;
     public GameObject speak3;
     public GameObject speak4;
@@ -35,33 +35,33 @@ public class TutorialManager : MonoBehaviour
     public TMP_Text hpBarUpgradeText;*/
     [Space]
     [Header("GameManager")]
-    private int _currentScore = 0;
+    private int _currentScore;
     private int _scoreMultiplier = 1;
     private const int ScorePerNote = 300;
     private int _combo;
     [Space]
-    public TMP_Text _currentScoreText;
-    public TMP_Text _scoreMultiplierText;
-    public TMP_Text _hpPlusUpgradeText;
-    public TMP_Text _hpBarUpgradeText;
-    public Slider _healthBar;
-    public float _health = 1f;
+    public TMP_Text currentScoreText;
+    public TMP_Text scoreMultiplierText;
+    public TMP_Text hpPlusUpgradeText;
+    public TMP_Text hpBarUpgradeText;
+    public Slider healthBar;
+    public float health = 1f;
     public float hitHealAmount = 0.5f;
     public float missDamageAmount = 0.1f;
 
     [Space]
-    public Canvas _canvas;
-    public GameObject _perfectPopupText;
-    public GameObject _missPopupText;
-    public Transform _perfectTransform;
+    public Canvas canvas;
+    public GameObject perfectPopupText;
+    public GameObject missPopupText;
+    public Transform perfectTransform;
     private Vector3 _perfectPosition;
-    public Transform _missTransform;
+    public Transform missTransform;
     private Vector3 _missPosition;
     [Space]
     [SerializeField] private AudioClip goodSound;
     [SerializeField] private AudioClip badSound;
     [Space]
-    public Material _dancerMat;
+    public Material dancerMat;
 
     private const float WaitTime = 2f;
 
@@ -81,7 +81,7 @@ public class TutorialManager : MonoBehaviour
         _instance = this;
         
         speak1.SetActive(true);
-        speak1m.SetActive(false);
+        speak1M.SetActive(false);
         speak2.SetActive(false);
         speak3.SetActive(false);
         speak4.SetActive(false);
@@ -97,24 +97,24 @@ public class TutorialManager : MonoBehaviour
         arrowTooltip3.SetActive(false);
         arrowTooltip4.SetActive(false);
 
-        _hpPlusUpgradeText.gameObject.SetActive(false);
-        _hpBarUpgradeText.gameObject.SetActive(false);
+        hpPlusUpgradeText.gameObject.SetActive(false);
+        hpBarUpgradeText.gameObject.SetActive(false);
         
 //copied parameters from GameManager
         
-        _dancerMat.SetFloat(Expression, 0);
+        dancerMat.SetFloat(Expression, 0);
+
+        _currentScore = 0;
+
+        currentScoreText.text = "Score\n0";
+
+        scoreMultiplierText.text = "Multiplier\nx1";
+
+        healthBar.value = health;
+
+        _missPosition = missTransform.position;
         
-
-
-        _currentScoreText.text = "Score\n0";
-
-        _scoreMultiplierText.text = "Multiplier\nx1";
-
-        _healthBar.value = _health;
-
-        _missPosition = _missTransform.position;
-        
-        _perfectPosition = _perfectTransform.position;
+        _perfectPosition = perfectTransform.position;
 
         progressBar.minValue = 0;
         progressBar.maxValue = 8;
@@ -155,7 +155,7 @@ public class TutorialManager : MonoBehaviour
             case 1:
                 /*show the keys you have to press*/
                 speak1.SetActive(false);
-                speak1m.SetActive(true);
+                speak1M.SetActive(true);
                 speak2.SetActive(false);
                 tutorialInputs.SetActive(true);
                 gameInputs.SetActive(false);
@@ -172,7 +172,7 @@ public class TutorialManager : MonoBehaviour
                 /*Hit the notes at the sound of the Beat!*/
                 tutorialInputs.SetActive(false);
                 gameInputs.SetActive(true);
-                speak1m.SetActive(false);
+                speak1M.SetActive(false);
 
                 speak2.SetActive(true);
                 speak3.SetActive(false);
@@ -194,8 +194,8 @@ public class TutorialManager : MonoBehaviour
                 
                 InputDirectionManager.EnableInput();
                 
-                // _health = Mathf.Clamp01(_health + 0.5f);
-                _healthBar.maxValue = _healthBar.value;
+                // health = Mathf.Clamp01(health + 0.5f);
+                healthBar.maxValue = healthBar.value;
                 
                 /*This way you can input the code played in music*/
                 speak2.SetActive(false);
@@ -208,15 +208,11 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 4:
                 /*be careful don't miss notes*/
-                _healthBar.maxValue = _healthBar.value;
-                /*_health = Mathf.Clamp01(_health + 0.5f);
-                _healthBar.value = _health;*/
+                healthBar.maxValue = healthBar.value;
                 
                 // Start periodic spawning if not already started
-                if (_noteSpawnerCoroutine == null)
-                {
-                    _noteSpawnerCoroutine = StartCoroutine(SpawnNotesPeriodically(5,1f));
-                }
+                _noteSpawnerCoroutine ??= StartCoroutine(SpawnNotesPeriodically(5, 1f));
+                
                 /*Disable all axis inputs during this step*/
                 InputDirectionManager.DisableInput();
 
@@ -243,16 +239,16 @@ public class TutorialManager : MonoBehaviour
                 speak6.SetActive(false);
                 arrowTooltip2.SetActive(false);
                 arrowTooltip3.SetActive(true);
-                _hpPlusUpgradeText.gameObject.SetActive(true);
-                _hpBarUpgradeText.gameObject.SetActive(true);
+                hpPlusUpgradeText.gameObject.SetActive(true);
+                hpBarUpgradeText.gameObject.SetActive(true);
                 break;
             case 6:
                 speak5.SetActive(false);
                 speak6.SetActive(true);
                 speak7.SetActive(false);
                 arrowTooltip3.SetActive(false);
-                _hpPlusUpgradeText.gameObject.SetActive(false);
-                _hpBarUpgradeText.gameObject.SetActive(false);
+                hpPlusUpgradeText.gameObject.SetActive(false);
+                hpBarUpgradeText.gameObject.SetActive(false);
 
                 break;
             case 7:
@@ -289,8 +285,8 @@ public class TutorialManager : MonoBehaviour
     {
         Debug.Log("Hit on time");
 
-        // SpawnFloatingText(_perfectPopupText, new Vector2(0, 222));
-        SpawnFloatingText(_perfectPopupText, _perfectPosition);
+        // SpawnFloatingText(perfectPopupText, new Vector2(0, 222));
+        SpawnFloatingText(perfectPopupText, _perfectPosition);
 
         // play sfx
         SoundFXManager.instance.PlaySoundFXClip( goodSound, transform, 2f);
@@ -301,31 +297,31 @@ public class TutorialManager : MonoBehaviour
         {
             _scoreMultiplier += 3;
 
-            _scoreMultiplierText.text = "Multiplier\nx" + _scoreMultiplier;
+            scoreMultiplierText.text = "Multiplier\nx" + _scoreMultiplier;
 
-            _health = Mathf.Clamp01(_health + hitHealAmount);
-            _healthBar.value = _health;
+            health = Mathf.Clamp01(health + hitHealAmount);
+            healthBar.value = health;
 
             StartCoroutine(ShowHpPlusUpgradeText());
 
-            _dancerMat.SetFloat(Expression, 3);
+            dancerMat.SetFloat(Expression, 3);
             if (_combo == 40)
             {
                 StartCoroutine(ResizeHealthBar(50f, 0.3f));
                 StartCoroutine(ShowHpBarUpgradeText());
-                _dancerMat.SetFloat(Expression, 4);
+                dancerMat.SetFloat(Expression, 4);
             }
         }
         else
         {
-            _dancerMat.SetFloat(Expression, 2); 
+            dancerMat.SetFloat(Expression, 2); 
             
 
             Invoke(nameof(HoldExpression), WaitTime);
         }
 
         _currentScore += ScorePerNote * _scoreMultiplier;
-        _currentScoreText.text = "Score\n" + _currentScore;
+        currentScoreText.text = "Score\n" + _currentScore;
 
         Debug.Log(_currentScore);
     }
@@ -334,11 +330,11 @@ public class TutorialManager : MonoBehaviour
     {
         Debug.Log("Missed!");
 
-        _dancerMat.SetFloat(Expression, 1);
+        dancerMat.SetFloat(Expression, 1);
         Invoke(nameof(HoldExpression), WaitTime);
         
-        // SpawnFloatingText(_missPopupText, new Vector2(-220, 197));
-        SpawnFloatingText(_missPopupText, _missPosition);
+        // SpawnFloatingText(missPopupText, new Vector2(-220, 197));
+        SpawnFloatingText(missPopupText, _missPosition);
         
         // play sfx
         SoundFXManager.instance.PlaySoundFXClip( badSound, transform, 2f);
@@ -348,10 +344,10 @@ public class TutorialManager : MonoBehaviour
         _combo = 0;
 
         _scoreMultiplier = 1;
-        _scoreMultiplierText.text = "Multiplier\nx" + _scoreMultiplier;
+        scoreMultiplierText.text = "Multiplier\nx" + _scoreMultiplier;
 
-        _health = Mathf.Clamp01(_health - missDamageAmount);
-        _healthBar.value = _health;
+        health = Mathf.Clamp01(health - missDamageAmount);
+        healthBar.value = health;
 
 
     }
@@ -359,28 +355,28 @@ public class TutorialManager : MonoBehaviour
     private void HoldExpression()
     {
         
-        _dancerMat.SetFloat(Expression, 0);
+        dancerMat.SetFloat(Expression, 0);
         // return null;
 
     }
     
     private IEnumerator ShowHpPlusUpgradeText()
     {
-        _hpPlusUpgradeText.gameObject.SetActive(true);
+        hpPlusUpgradeText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
-        _hpPlusUpgradeText.gameObject.SetActive(false);
+        hpPlusUpgradeText.gameObject.SetActive(false);
     }
 
     private IEnumerator ShowHpBarUpgradeText()
     {
-        _hpBarUpgradeText.gameObject.SetActive(true);
+        hpBarUpgradeText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
-        _hpBarUpgradeText.gameObject.SetActive(false);
+        hpBarUpgradeText.gameObject.SetActive(false);
     }
 
     private IEnumerator ResizeHealthBar(float delta, float duration)
     {
-        RectTransform rt = _healthBar.GetComponent<RectTransform>();
+        RectTransform rt = healthBar.GetComponent<RectTransform>();
         float initialWidth = rt.rect.width;
         float targetWidth = initialWidth + delta;
         float elapsed = 0f;
@@ -399,7 +395,7 @@ public class TutorialManager : MonoBehaviour
 
     private void SpawnFloatingText(GameObject popupText, Vector3 screenPosition)
     {
-        var instance = Instantiate(popupText, _canvas.transform);
+        var instance = Instantiate(popupText, canvas.transform);
         instance.GetComponent<RectTransform>().position = screenPosition;
     }
 }
