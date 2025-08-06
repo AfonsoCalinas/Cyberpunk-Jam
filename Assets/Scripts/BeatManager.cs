@@ -17,7 +17,7 @@ public class BeatManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         foreach (Intervals interval in _intervals)
         {

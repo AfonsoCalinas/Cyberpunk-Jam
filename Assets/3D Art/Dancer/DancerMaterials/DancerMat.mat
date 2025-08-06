@@ -70,7 +70,7 @@ Material:
     - _CastShadows: 1
     - _Cull: 0
     - _DstBlend: 0
-    - _Expression: 1
+    - _Expression: 0
     - _Iridescence: 125
     - _QueueControl: 0
     - _QueueOffset: 0

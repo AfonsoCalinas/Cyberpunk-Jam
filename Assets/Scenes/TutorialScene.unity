@@ -8016,7 +8016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speak1: {fileID: 529812662}
-  speak1m: {fileID: 1634830539}
+  speak1M: {fileID: 1634830539}
   speak2: {fileID: 227974587}
   speak3: {fileID: 1345269259}
   speak4: {fileID: 1775745899}
@@ -8032,21 +8032,22 @@ MonoBehaviour:
   middleNotePrefab: {fileID: 4577635236427932892, guid: d79d304f90ed4e04fb6f8449428a05d4, type: 3}
   parentCanvas: {fileID: 1366394625}
   spawnPoint: {fileID: 2000165483}
-  _currentScoreText: {fileID: 2005800213}
-  _scoreMultiplierText: {fileID: 467299150}
-  _hpPlusUpgradeText: {fileID: 113164827}
-  _hpBarUpgradeText: {fileID: 345268042}
-  _healthBar: {fileID: 714562608}
-  _health: 1
+  currentScoreText: {fileID: 2005800213}
+  scoreMultiplierText: {fileID: 467299150}
+  hpPlusUpgradeText: {fileID: 113164827}
+  hpBarUpgradeText: {fileID: 345268042}
+  healthBar: {fileID: 714562608}
+  health: 1
+  hitHealAmount: 0.5
   missDamageAmount: 0.1
-  _canvas: {fileID: 1366394624}
-  _perfectPopupText: {fileID: 186337558139220332, guid: 0c23d84501367864688844f4c4a41828, type: 3}
-  _missPopupText: {fileID: 7174790478332629774, guid: 1464223bbda7aed4cbb04d2155dae5e3, type: 3}
-  _perfectTransform: {fileID: 1305034381}
-  _missTransform: {fileID: 587024007}
+  canvas: {fileID: 1366394624}
+  perfectPopupText: {fileID: 186337558139220332, guid: 0c23d84501367864688844f4c4a41828, type: 3}
+  missPopupText: {fileID: 7174790478332629774, guid: 1464223bbda7aed4cbb04d2155dae5e3, type: 3}
+  perfectTransform: {fileID: 1305034381}
+  missTransform: {fileID: 587024007}
   goodSound: {fileID: 8300000, guid: 6765ff850ad94334abcc511a17e64bf8, type: 3}
   badSound: {fileID: 8300000, guid: 22b0231dd389b5544aff732f372b69c2, type: 3}
-  _dancerMat: {fileID: 2100000, guid: 82ac8ee4c193d31469916facdf1bf088, type: 2}
+  dancerMat: {fileID: 2100000, guid: 82ac8ee4c193d31469916facdf1bf088, type: 2}
   progressBar: {fileID: 471796366}
   particleEffectController: {fileID: 1241413004}
   pauseManager: {fileID: 1961429790}
@@ -9148,15 +9149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81310b0a063c27b4c8c8dcafdd7a0392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topLeft: {fileID: 513378915}
-  _topMiddle: {fileID: 22425532}
-  _topRight: {fileID: 891310024}
-  _midLeft: {fileID: 590159100}
-  _midMiddle: {fileID: 656634232}
-  _midRight: {fileID: 592526426}
-  _bottomLeft: {fileID: 1787823096}
-  _bottomMiddle: {fileID: 929098188}
-  _bottomRight: {fileID: 1206657660}
+  buttonMappings: []
   hitSound: {fileID: 8300000, guid: e1ede50661e46ba45b0ae6053055c8f7, type: 3}
 --- !u!114 &1840990413
 MonoBehaviour:
@@ -9602,8 +9595,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 629560342}
-  - {fileID: 837067950}
   - {fileID: 5586766896401806414}
+  - {fileID: 837067950}
   - {fileID: 1537907390}
   - {fileID: 175052715}
   - {fileID: 597169769}

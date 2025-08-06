@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Button = UnityEngine.UI.Button;
 using TMPro;
@@ -8,7 +6,7 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    public bool simulateMobileInEditor = false;
+    public bool simulateMobileInEditor;
     public GameObject quitButton;
     private bool _isMobile;
     
@@ -20,7 +18,7 @@ public class MenuManager : MonoBehaviour
 
     public Button[] levelButtons; // Assign these in the Inspector
 
-    void Start()
+    private void Start()
     {
         UpdateLevelButtons();
         
@@ -34,72 +32,52 @@ public class MenuManager : MonoBehaviour
         quitButton.SetActive(!_isMobile);
     }
 
-    void UpdateLevelButtons()
+    private void UpdateLevelButtons()
     {
-        int unlockedIndex = LevelTracker.GetUnlockedLevelIndex();
+        var unlockedIndex = LevelTracker.GetUnlockedLevelIndex();
 
-        for (int i = 0; i < levelButtons.Length; i++)
+        for (var i = 0; i < levelButtons.Length; i++)
         {
-            int sceneBuildIndex = 1 + i; // Level1 starts at index 2
+            var sceneBuildIndex = 1 + i; // Level1 starts at index 2
 
-            bool isUnlocked = sceneBuildIndex <= unlockedIndex;
-            bool isCompleted = LevelTracker.IsLevelCompleted(sceneBuildIndex);
+            var isUnlocked = sceneBuildIndex <= unlockedIndex;
+            var isCompleted = LevelTracker.IsLevelCompleted(sceneBuildIndex);
             
             levelButtons[i].interactable = isUnlocked;
 
-            ColorBlock cb = levelButtons[i].colors;
-            cb.normalColor = isUnlocked ? Color.HSVToRGB(0,0,0.9f,true) : Color.HSVToRGB(0, 0, 0.2f,true); ;
-            cb.highlightedColor = isUnlocked ? Color.HSVToRGB(0,0,1,true) : Color.HSVToRGB(0, 0, 0.3f,true);;
+            var cb = levelButtons[i].colors;
+            cb.normalColor = isUnlocked ? Color.HSVToRGB(0,0,0.9f,true) : Color.HSVToRGB(0, 0, 0.2f,true);
+            cb.highlightedColor = isUnlocked ? Color.HSVToRGB(0,0,1,true) : Color.HSVToRGB(0, 0, 0.3f,true);
             cb.pressedColor = isUnlocked ? Color.HSVToRGB(0, 0, 0.75f, true) : Color.HSVToRGB(0, 0, 0.2f,true);
             levelButtons[i].colors = cb;
 
             // 🔠 Change font asset
-            TextMeshProUGUI tmpText = levelButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+            var tmpText = levelButtons[i].GetComponentInChildren<TextMeshProUGUI>();
             if (tmpText != null)
             {
                 if (isCompleted && completedFontAsset != null)
                     tmpText.font = completedFontAsset;
-                else if (isUnlocked && unlockedFontAsset != null)
-                    tmpText.font = unlockedFontAsset;
-                else if (!isUnlocked && lockedFontAsset != null)
-                    tmpText.font = lockedFontAsset;
+                else
+                    tmpText.font = isUnlocked switch
+                    {
+                        true when unlockedFontAsset != null => unlockedFontAsset,
+                        false when lockedFontAsset != null => lockedFontAsset,
+                        _ => tmpText.font
+                    };
             }
-            
-            if (isCompleted)
-            {
-                // Example 1: Change button color
-                ColorBlock colors = levelButtons[i].colors;
-                colors.normalColor = Color.HSVToRGB(.12f,1f,0.9f,true);
-                colors.highlightedColor = Color.HSVToRGB(.12f,.5f,1f,true);
-                colors.pressedColor = Color.HSVToRGB(.12f,1f,0.9f,true);
-                levelButtons[i].colors = colors;
 
-                // Example 2: Add a checkmark or trophy icon if you use UI Image or text
-                // button.GetComponentInChildren<Text>().text += " ✓";
-            }
+            if (!isCompleted) continue;
+            // Example 1: Change button color
+            var colors = levelButtons[i].colors;
+            colors.normalColor = Color.HSVToRGB(.12f,1f,0.9f,true);
+            colors.highlightedColor = Color.HSVToRGB(.12f,.5f,1f,true);
+            colors.pressedColor = Color.HSVToRGB(.12f,1f,0.9f,true);
+            levelButtons[i].colors = colors;
+
+            // Example 2: Add a checkmark or trophy icon if you use UI Image or text
+            // button.GetComponentInChildren<Text>().text += " ✓";
         }
     }
-
-    
-    /*public void Level1()
-    {
-        SceneManager.LoadScene("TutorialScene");
-    }
-
-    public void Level2()
-    {
-        SceneManager.LoadScene("Level2Scene");
-    }
-
-    public void Level3()
-    {
-        SceneManager.LoadScene("Level3Scene");
-    }
-
-    public void Level4()
-    {
-        SceneManager.LoadScene("Level4Scene");
-    }*/
     
     public void LoadLevelByIndex(int levelNumber)
     {
@@ -130,7 +108,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnPlayButtonPressed()
     {
-        int unlockedIndex = LevelTracker.GetUnlockedLevelIndex();
+        var unlockedIndex = LevelTracker.GetUnlockedLevelIndex();
         SceneManager.LoadScene(unlockedIndex);
     }
     

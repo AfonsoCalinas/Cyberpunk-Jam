@@ -1,29 +1,29 @@
-using System;
 using UnityEngine;
 
 public class JoystickToggle : MonoBehaviour
 {
-    public bool simulateMobileInEditor = false;
+    public bool simulateMobileInEditor;
     public GameObject joystick;
     public GameObject pauseButton;
-    private bool isMobile;
-    void Start()
+    private bool _isMobile;
+
+    private void Start()
     { 
-        isMobile = Application.isMobilePlatform;
+        _isMobile = Application.isMobilePlatform;
 
 #if UNITY_EDITOR
         if (simulateMobileInEditor)
-            isMobile = true;
+            _isMobile = true;
 #endif
 
-        gameObject.SetActive(isMobile);
+        gameObject.SetActive(_isMobile);
     }
 
     private void Update()
     {
         if (GameManager._instance)
         {
-            if (isMobile && GameManager._instance.pauseManager.isPaused)
+            if (_isMobile && GameManager._instance.pauseManager.isPaused)
             {
                 joystick.SetActive(false);
                 // pauseButton.SetActive(false);
@@ -36,7 +36,7 @@ public class JoystickToggle : MonoBehaviour
         }
         else
         {
-            if (isMobile && TutorialManager._instance.pauseManager.isPaused)
+            if (_isMobile && TutorialManager._instance.pauseManager.isPaused)
             {
                 joystick.SetActive(false);
                 // pauseButton.SetActive(false);
