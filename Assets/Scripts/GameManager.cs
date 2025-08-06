@@ -25,9 +25,9 @@ public class GameManager : MonoBehaviour
     public GameObject _clickAnyButton;
     public TextMeshProUGUI levelTitle;
     public float _health = 1f;
-    public float hitHealAmount = 0.05f;
+    public float hitHealAmount = 0.5f;
     public float missDamageAmount = 0.1f;
-    private bool _sceneScheduled = false;
+    private bool _sceneScheduled;
     public Canvas _canvas;
     public GameObject _perfectPopupText;
     public GameObject _missPopupText;
@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
         _missPosition = _missTransform.position;
         
         _perfectPosition = _perfectTransform.position;
+        
+        _sceneScheduled = false;
 
         if (_music.clip != null)
         {
@@ -74,7 +76,7 @@ public class GameManager : MonoBehaviour
         UpdateLevelTitle();
     }
 
-    void Update()
+    private void Update()
     {
         if (!_startMusic && Input.anyKeyDown)
         {
@@ -142,7 +144,7 @@ public class GameManager : MonoBehaviour
 
             _scoreMultiplierText.text = "Multiplier\nx" + _scoreMultiplier;
 
-            _health = Mathf.Clamp01(_health + 0.5f);
+            _health = Mathf.Clamp01(_health + hitHealAmount);
             _healthBar.value = _health;
 
             StartCoroutine(ShowHpPlusUpgradeText());
@@ -248,7 +250,7 @@ public class GameManager : MonoBehaviour
         {
             float delay = Mathf.Max(_music.clip.length - 5f, 0f);
             _sceneScheduled = true;
-            Invoke("GoToVictoryScene", delay);
+            Invoke(nameof(GoToVictoryScene), delay);
         }
     }
 

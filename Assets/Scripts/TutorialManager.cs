@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -9,6 +8,8 @@ public class TutorialManager : MonoBehaviour
 {
 
     public static TutorialManager _instance;
+    private static readonly int Expression = Shader.PropertyToID("_Expression");
+
     [Header("Native parameters")]
     public GameObject speak1;
     public GameObject speak1m;
@@ -29,15 +30,15 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject middleNotePrefab;
     [SerializeField] private RectTransform parentCanvas;
     [SerializeField] public RectTransform spawnPoint;
-    private int _step = 0;
+    private int _step;
     /*public TMP_Text hpPlusUpgradeText;
     public TMP_Text hpBarUpgradeText;*/
     [Space]
     [Header("GameManager")]
     private int _currentScore = 0;
     private int _scoreMultiplier = 1;
-    private int _scorePerNote = 300;
-    private int _combo = 0;
+    private const int ScorePerNote = 300;
+    private int _combo;
     [Space]
     public TMP_Text _currentScoreText;
     public TMP_Text _scoreMultiplierText;
@@ -45,6 +46,7 @@ public class TutorialManager : MonoBehaviour
     public TMP_Text _hpBarUpgradeText;
     public Slider _healthBar;
     public float _health = 1f;
+    public float hitHealAmount = 0.5f;
     public float missDamageAmount = 0.1f;
 
     [Space]
@@ -60,14 +62,16 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private AudioClip badSound;
     [Space]
     public Material _dancerMat;
-    private float waitTime = 2f;
+
+    private const float WaitTime = 2f;
+
     [Space]
     public Slider progressBar;
 
-    private int _progress = 0;
+    private int _progress;
     public ParticleEffectController particleEffectController;
     
-    private Coroutine noteSpawnerCoroutine;
+    private Coroutine _noteSpawnerCoroutine;
     public PauseManager pauseManager;
     
     
@@ -98,7 +102,7 @@ public class TutorialManager : MonoBehaviour
         
 //copied parameters from GameManager
         
-        _dancerMat.SetFloat("_Expression", 0);
+        _dancerMat.SetFloat(Expression, 0);
         
 
 
@@ -117,7 +121,9 @@ public class TutorialManager : MonoBehaviour
 
         _progress = 0;
 
+        _step = 0;
 
+        _combo = 0;
 
     }
 
@@ -156,10 +162,10 @@ public class TutorialManager : MonoBehaviour
                 arrowTooltip1.SetActive(false);
                 
                 /*stop notes when backwards*/
-                if (noteSpawnerCoroutine != null)
+                if (_noteSpawnerCoroutine != null)
                 {
-                    StopCoroutine(noteSpawnerCoroutine);
-                    noteSpawnerCoroutine = null;
+                    StopCoroutine(_noteSpawnerCoroutine);
+                    _noteSpawnerCoroutine = null;
                 }
                 break;
             case 2:
@@ -173,24 +179,17 @@ public class TutorialManager : MonoBehaviour
                 arrowTooltip1.SetActive(true);
                 arrowTooltip4.SetActive(false);
                 
-                /*GameObject note = Instantiate(middleNotePrefab, parentCanvas);
-                RectTransform noteRect = note.GetComponent<RectTransform>();
-                noteRect.anchoredPosition = spawnPoint.anchoredPosition;*/
-                
                 // Start periodic spawning if not already started
-                if (noteSpawnerCoroutine == null)
-                {
-                    noteSpawnerCoroutine = StartCoroutine(SpawnNotesPeriodically(4,3f));
-                }
+                _noteSpawnerCoroutine ??= StartCoroutine(SpawnNotesPeriodically(4, 3f));
 
 
                 break;
             case 3:
                 /*stop notes*/
-                if (noteSpawnerCoroutine != null)
+                if (_noteSpawnerCoroutine != null)
                 {
-                    StopCoroutine(noteSpawnerCoroutine);
-                    noteSpawnerCoroutine = null;
+                    StopCoroutine(_noteSpawnerCoroutine);
+                    _noteSpawnerCoroutine = null;
                 }
                 
                 InputDirectionManager.EnableInput();
@@ -214,9 +213,9 @@ public class TutorialManager : MonoBehaviour
                 _healthBar.value = _health;*/
                 
                 // Start periodic spawning if not already started
-                if (noteSpawnerCoroutine == null)
+                if (_noteSpawnerCoroutine == null)
                 {
-                    noteSpawnerCoroutine = StartCoroutine(SpawnNotesPeriodically(5,1f));
+                    _noteSpawnerCoroutine = StartCoroutine(SpawnNotesPeriodically(5,1f));
                 }
                 /*Disable all axis inputs during this step*/
                 InputDirectionManager.DisableInput();
@@ -232,10 +231,10 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 5:
                 /*stop notes*/
-                if (noteSpawnerCoroutine != null)
+                if (_noteSpawnerCoroutine != null)
                 {
-                    StopCoroutine(noteSpawnerCoroutine);
-                    noteSpawnerCoroutine = null;
+                    StopCoroutine(_noteSpawnerCoroutine);
+                    _noteSpawnerCoroutine = null;
                 }
                 InputDirectionManager.EnableInput();
                 
@@ -304,28 +303,28 @@ public class TutorialManager : MonoBehaviour
 
             _scoreMultiplierText.text = "Multiplier\nx" + _scoreMultiplier;
 
-            _health = Mathf.Clamp01(_health + 0.5f);
+            _health = Mathf.Clamp01(_health + hitHealAmount);
             _healthBar.value = _health;
 
-            StartCoroutine(ShowHPPlusUpgradeText());
+            StartCoroutine(ShowHpPlusUpgradeText());
 
-            _dancerMat.SetFloat("_Expression", 3);
+            _dancerMat.SetFloat(Expression, 3);
             if (_combo == 40)
             {
                 StartCoroutine(ResizeHealthBar(50f, 0.3f));
-                StartCoroutine(ShowHPBarUpgradeText());
-                _dancerMat.SetFloat("_Expression", 4);
+                StartCoroutine(ShowHpBarUpgradeText());
+                _dancerMat.SetFloat(Expression, 4);
             }
         }
         else
         {
-            _dancerMat.SetFloat("_Expression", 2); 
+            _dancerMat.SetFloat(Expression, 2); 
             
 
-            Invoke("HoldExpression", waitTime);
+            Invoke(nameof(HoldExpression), WaitTime);
         }
 
-        _currentScore += _scorePerNote * _scoreMultiplier;
+        _currentScore += ScorePerNote * _scoreMultiplier;
         _currentScoreText.text = "Score\n" + _currentScore;
 
         Debug.Log(_currentScore);
@@ -335,8 +334,8 @@ public class TutorialManager : MonoBehaviour
     {
         Debug.Log("Missed!");
 
-        _dancerMat.SetFloat("_Expression", 1);
-        Invoke("HoldExpression", waitTime);
+        _dancerMat.SetFloat(Expression, 1);
+        Invoke(nameof(HoldExpression), WaitTime);
         
         // SpawnFloatingText(_missPopupText, new Vector2(-220, 197));
         SpawnFloatingText(_missPopupText, _missPosition);
@@ -360,19 +359,19 @@ public class TutorialManager : MonoBehaviour
     private void HoldExpression()
     {
         
-        _dancerMat.SetFloat("_Expression", 0);
+        _dancerMat.SetFloat(Expression, 0);
         // return null;
 
     }
     
-    private IEnumerator ShowHPPlusUpgradeText()
+    private IEnumerator ShowHpPlusUpgradeText()
     {
         _hpPlusUpgradeText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         _hpPlusUpgradeText.gameObject.SetActive(false);
     }
 
-    private IEnumerator ShowHPBarUpgradeText()
+    private IEnumerator ShowHpBarUpgradeText()
     {
         _hpBarUpgradeText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
@@ -398,12 +397,9 @@ public class TutorialManager : MonoBehaviour
     }
 
 
-
-
-
-    public void SpawnFloatingText(GameObject popupText, Vector3 screenPosition)
+    private void SpawnFloatingText(GameObject popupText, Vector3 screenPosition)
     {
-        GameObject instance = Instantiate(popupText, _canvas.transform);
+        var instance = Instantiate(popupText, _canvas.transform);
         instance.GetComponent<RectTransform>().position = screenPosition;
     }
 }
