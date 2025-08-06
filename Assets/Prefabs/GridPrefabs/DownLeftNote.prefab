@@ -4852,7 +4852,7 @@ GameObject:
   - component: {fileID: 3012016969871372411}
   - component: {fileID: 684600153099852543}
   m_Layer: 6
-  m_Name: YellowLeftDownNote
+  m_Name: DownLeftNote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

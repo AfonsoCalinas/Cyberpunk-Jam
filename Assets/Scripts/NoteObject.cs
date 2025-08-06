@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class NoteObject : MonoBehaviour
 {
-    public bool _canBePressed;
+    public bool canBePressed;
     private bool _hasBeenPressed = false;
     public string _activatorTag = "Activator";
 
@@ -25,7 +26,7 @@ public class NoteObject : MonoBehaviour
 
         // string inputDir = GetInputDirection();
 
-        if (_canBePressed && InputDirectionManager.GetDirectionName() == _direction)
+        if (canBePressed && InputDirectionManager.GetDirectionName() == _direction)
         {
             if (GameManager._instance != null)
             {
@@ -51,49 +52,29 @@ public class NoteObject : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
-
-    /*private string GetInputDirection()
-    {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
-        if (h == -1 && v == 1) return "WA";
-        if (h == 1 && v == 1) return "WD";
-        if (h == -1 && v == -1) return "SA";
-        if (h == 1 && v == -1) return "SD";
-        if (h == -1) return "A";
-        if (h == 1) return "D";
-        if (v == 1) return "W";
-        if (v == -1) return "S";
-
-        return "";
-    }*/
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(_activatorTag))
         {
-            _canBePressed = true;
+            canBePressed = true;
         }
     }
     
-    private void OnTriggerExit2D(Collider2D other) {
-         if (other.CompareTag(_activatorTag))
-        {
-            _canBePressed = false;
-            if(!_hasBeenPressed){
-                if (GameManager._instance != null)
-                {
-                    GameManager._instance.NoteMissed();
-                }
-                else
-                {
-                    TutorialManager._instance.NoteMissed();
-                }
-
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag(_activatorTag)) return;
+        canBePressed = false;
+        if(!_hasBeenPressed){
+            if (GameManager._instance != null)
+            {
+                GameManager._instance.NoteMissed();
             }
-            
+            else
+            {
+                TutorialManager._instance.NoteMissed();
+            }
+
         }
     }
 }

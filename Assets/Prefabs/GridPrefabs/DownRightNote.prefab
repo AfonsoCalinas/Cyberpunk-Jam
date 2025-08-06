@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4456825835334776597}
   - component: {fileID: 2217972890159019362}
   m_Layer: 6
-  m_Name: YellowRightNote
+  m_Name: DownRightNote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
