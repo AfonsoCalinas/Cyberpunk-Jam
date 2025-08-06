@@ -8,9 +8,9 @@ public class DanceFloorController : MonoBehaviour
     private bool _inputLocked;
     public float inputCooldown = 0.25f; // prevent firing every frame
 
-    void Update()
+    private void Update()
     {
-        Vector2Int inputDir = InputDirectionManager.GetDirectionVector();
+        var inputDir = InputDirectionManager.GetDirectionVector();
 
         if (inputDir == Vector2Int.zero)
         {
@@ -21,23 +21,21 @@ public class DanceFloorController : MonoBehaviour
         {
             idleTile.TurnOff(); // turn off center
 
-            int index = GetTileIndexFromDirection(inputDir);
-            if (index >= 0 && index < tiles.Length)
-            {
-                tiles[index].ActivateTile();
-                StartCoroutine(InputCooldown());
-            }
+            var index = GetTileIndexFromDirection(inputDir);
+            if (index < 0 || index >= tiles.Length) return;
+            tiles[index].ActivateTile();
+            StartCoroutine(InputCooldown());
         }
     }
 
-    int GetTileIndexFromDirection(Vector2Int dir)
+    private static int GetTileIndexFromDirection(Vector2Int dir)
     {
-        int x = dir.x + 1; // -1 → 0, 0 → 1, 1 → 2
-        int y = 1 - dir.y; //  1 → 0, 0 → 1, -1 → 2 (inverted Y)
+        var x = dir.x + 1; // -1 → 0, 0 → 1, 1 → 2
+        var y = 1 - dir.y; //  1 → 0, 0 → 1, -1 → 2 (inverted Y)
         return y * 3 + x;
     }
 
-    System.Collections.IEnumerator InputCooldown()
+    private System.Collections.IEnumerator InputCooldown()
     {
         _inputLocked = true;
         yield return new WaitForSeconds(inputCooldown);
