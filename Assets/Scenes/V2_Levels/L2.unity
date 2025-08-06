@@ -257,9 +257,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 3936626434449763414, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3951399948082673312, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4009072831176951165, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4490771132615762636, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_AnchorMax.y
@@ -996,7 +1004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1937092100948294841, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
       propertyPath: _bpm
-      value: 132
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 1937092100948294841, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
       propertyPath: _audioSource
@@ -2248,7 +2256,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 771475202892751106, guid: 167f0dab2283056478467f8049ce059a, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: f11553386c4362248b5723f6f9f1556a, type: 3}
+  m_Resource: {fileID: 8300000, guid: 9603830f2ae740a48ba7f884befd0768, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -195,8 +195,8 @@ public class TutorialManager : MonoBehaviour
                 
                 InputDirectionManager.EnableInput();
                 
-                _health = Mathf.Clamp01(_health + 0.5f);
-                _healthBar.value = _health;
+                // _health = Mathf.Clamp01(_health + 0.5f);
+                _healthBar.maxValue = _healthBar.value;
                 
                 /*This way you can input the code played in music*/
                 speak2.SetActive(false);
@@ -208,8 +208,10 @@ public class TutorialManager : MonoBehaviour
                 arrowTooltip4.SetActive(true);
                 break;
             case 4:
-                _health = Mathf.Clamp01(_health + 0.5f);
-                _healthBar.value = _health;
+                /*be careful don't miss notes*/
+                _healthBar.maxValue = _healthBar.value;
+                /*_health = Mathf.Clamp01(_health + 0.5f);
+                _healthBar.value = _health;*/
                 
                 // Start periodic spawning if not already started
                 if (noteSpawnerCoroutine == null)
