@@ -18,7 +18,7 @@ public class TutorialInputHighlighter : MonoBehaviour
 
     private TutorialNote _activeNote;
 
-    void Update()
+    private void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");

@@ -8,19 +8,14 @@ public class TutorialNote : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float _speed = 50f; // Units per second
     public string _direction;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
+    
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         transform.Translate(_speed * Time.deltaTime * Vector3.up, Space.World);
 
-        string inputDir = GetInputDirection();
+        var inputDir = GetInputDirection();
 
         if (_canBePressed && inputDir == _direction)
         {

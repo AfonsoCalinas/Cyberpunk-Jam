@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -285,8 +286,8 @@ public class TutorialManager : MonoBehaviour
         
         while (spawnedCount < noteCountLimit)
         {
-            GameObject note = Instantiate(middleNotePrefab, parentCanvas);
-            RectTransform noteRect = note.GetComponent<RectTransform>();
+            var note = Instantiate(middleNotePrefab, parentCanvas);
+            var noteRect = note.GetComponent<RectTransform>();
             noteRect.anchoredPosition = spawnPoint.anchoredPosition;
             
             _spawnedNotes.Add(note); // track the spawned note
@@ -296,14 +297,11 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    public void DestroyAllSpawnedNotes()
+    private void DestroyAllSpawnedNotes()
     {
-        foreach (GameObject note in _spawnedNotes)
+        foreach (var note in _spawnedNotes.Where(note => note != null))
         {
-            if (note != null)
-            {
-                Destroy(note);
-            }
+            Destroy(note);
         }
 
         _spawnedNotes.Clear(); // cleanup the list
@@ -405,14 +403,14 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator ResizeHealthBar(float delta, float duration)
     {
-        RectTransform rt = healthBar.GetComponent<RectTransform>();
-        float initialWidth = rt.rect.width;
-        float targetWidth = initialWidth + delta;
-        float elapsed = 0f;
+        var rt = healthBar.GetComponent<RectTransform>();
+        var initialWidth = rt.rect.width;
+        var targetWidth = initialWidth + delta;
+        var elapsed = 0f;
 
         while (elapsed < duration)
         {
-            float newWidth = Mathf.Lerp(initialWidth, targetWidth, elapsed / duration);
+            var newWidth = Mathf.Lerp(initialWidth, targetWidth, elapsed / duration);
             rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
             elapsed += Time.deltaTime;
             yield return null;

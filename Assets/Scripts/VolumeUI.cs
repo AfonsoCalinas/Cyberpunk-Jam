@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +9,7 @@ public class VolumeUI : MonoBehaviour
     private SoundMixerManager _soundMixer;
 
 
-    void Start()
+    private void Start()
     {
         // Get reference
         _soundMixer = FindAnyObjectByType<SoundMixerManager>();

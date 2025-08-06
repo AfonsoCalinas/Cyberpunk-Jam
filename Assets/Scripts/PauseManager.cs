@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,14 +7,14 @@ public class PauseManager : MonoBehaviour
 
     public AudioSource musicSource;
 
-    public bool isPaused = false;
+    public bool isPaused;
 
     private void Start()
     {
         pauseMenuUI.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) // Or your pause key
         {

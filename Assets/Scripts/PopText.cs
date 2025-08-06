@@ -6,23 +6,23 @@ public class PopText : MonoBehaviour
     public float lifetime = 2f;
     public float moveSpeed = 20f;
 
-    private TextMeshProUGUI tmp;
-    private Color startColor;
-    private float elapsed;
+    private TextMeshProUGUI _tmp;
+    private Color _startColor;
+    private float _elapsed;
 
-    void Awake()
+    private void Awake()
     {
-        tmp = GetComponent<TextMeshProUGUI>();
-        startColor = tmp.color;
+        _tmp = GetComponent<TextMeshProUGUI>();
+        _startColor = _tmp.color;
     }
 
-    void Update()
+    private void Update()
     {
-        elapsed += Time.deltaTime;
-        transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
-        float alpha = Mathf.Lerp(startColor.a, 0, elapsed / lifetime);
-        tmp.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
-        if (elapsed >= lifetime)
+        _elapsed += Time.deltaTime;
+        transform.Translate(Vector3.up * (moveSpeed * Time.deltaTime));
+        var alpha = Mathf.Lerp(_startColor.a, 0, _elapsed / lifetime);
+        _tmp.color = new Color(_startColor.r, _startColor.g, _startColor.b, alpha);
+        if (_elapsed >= lifetime)
         {
             Destroy(gameObject);
         }

@@ -13,80 +13,43 @@ public class NoteSpawner : MonoBehaviour
 
     public void SpawnNote()
     {
-
-        // Pick random prefab type/lane
-        int nLane = Random.Range(0, _spawnPoints.Length);
-
-        if (nLane == 0)
+        var nLane = Random.Range(0, _spawnPoints.Length);
+        var prefabArray = nLane switch
         {
-            int nNote = Random.Range(0, _leftNotePrefabs.Length);
+            0 => _leftNotePrefabs,
+            1 => _middleNotePrefabs,
+            _ => _rightNotePrefabs
+        };
 
-            GameObject note = Instantiate(_leftNotePrefabs[nNote], _parentCanvas);
+        var nNote = Random.Range(0, prefabArray.Length);
+        var note = Instantiate(prefabArray[nNote], _parentCanvas);
 
-            RectTransform noteRect = note.GetComponent<RectTransform>();
-            noteRect.anchoredPosition = _spawnPoints[nLane].anchoredPosition;
+        var noteRect = note.GetComponent<RectTransform>();
+        noteRect.anchoredPosition = _spawnPoints[nLane].anchoredPosition;
 
-            string sceneName = SceneManager.GetActiveScene().name;
-            float noteSpeed = GetSpeedForScene(sceneName);
+        var noteSpeed = GetSpeedForCurrentLevel();
 
-            NoteObject noteScript = note.GetComponent<NoteObject>();
-            if (noteScript != null)
-            {
-                noteScript.speed = noteSpeed;
-            }
-        }
-        else if (nLane == 1)
+        var noteScript = note.GetComponent<NoteObject>();
+        if (noteScript != null)
         {
-            int nNote = Random.Range(0, _middleNotePrefabs.Length);
-
-            GameObject note = Instantiate(_middleNotePrefabs[nNote], _parentCanvas);
-
-            RectTransform noteRect = note.GetComponent<RectTransform>();
-            noteRect.anchoredPosition = _spawnPoints[nLane].anchoredPosition;
-
-            string sceneName = SceneManager.GetActiveScene().name;
-            float noteSpeed = GetSpeedForScene(sceneName);
-
-            NoteObject noteScript = note.GetComponent<NoteObject>();
-            if (noteScript != null)
-            {
-                noteScript.speed = noteSpeed;
-            }
-        }
-        else
-        {
-            int nNote = Random.Range(0, _rightNotePrefabs.Length);
-
-            GameObject note = Instantiate(_rightNotePrefabs[nNote], _parentCanvas);
-
-            RectTransform noteRect = note.GetComponent<RectTransform>();
-            noteRect.anchoredPosition = _spawnPoints[nLane].anchoredPosition;
-
-            string sceneName = SceneManager.GetActiveScene().name;
-            float noteSpeed = GetSpeedForScene(sceneName);
-
-            NoteObject noteScript = note.GetComponent<NoteObject>();
-            if (noteScript != null)
-            {
-                noteScript.speed = noteSpeed;
-            }
+            noteScript.speed = noteSpeed;
         }
     }
+
     
-    private float GetSpeedForScene(string sceneName)
+    private static float GetSpeedForCurrentLevel()
     {
-        switch (sceneName)
+        var index = SceneManager.GetActiveScene().buildIndex;
+
+        // Assuming Tutorial = 1, Level1 = 2, Level2 = 3, ...
+        // Adjust these speeds as needed
+        switch (index)
         {
-            case "Level1Scene":
-                return 200f;
-            case "Level2Scene":
-                return 250f;
-            case "Level3Scene":
-                return 300f;
-            case "Level4Scene":
-                return 350f;
-            default:
-                return 200f;
+            case 2: return 200f; // Level1
+            case 3: return 250f; // Level2
+            case 4: return 300f; // Level3
+            case 5: return 350f; // Level4
+            default: return 200f;
         }
     }
 }
