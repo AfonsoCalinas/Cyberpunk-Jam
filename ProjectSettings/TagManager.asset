@@ -4,15 +4,15 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - RedRightUp
-  - RedUp
-  - RedLeftUp
-  - BlueLeft
-  - BlueMiddle
-  - BlueRight
-  - YellowLeftDown
-  - YellowDown
-  - YellowRightDown
+  - UpRight
+  - Up
+  - UpLeft
+  - Left
+  - Middle
+  - Right
+  - DownLeft
+  - Down
+  - DownRight
   layers:
   - Default
   - TransparentFX

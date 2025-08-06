@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  _activatorTag: RedLeftUp
+  activatorTag: UpLeft
   _speed: 200
   _direction: WA
 --- !u!1001 &1410449355483957418

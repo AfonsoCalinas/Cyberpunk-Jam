@@ -92,7 +92,7 @@ public class InputHighlighter : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (_activeNote == null && other.TryGetComponent(out NoteObject note) &&
-            other.CompareTag(note._activatorTag))
+            other.CompareTag(note.activatorTag))
         {
             _activeNote = note;
         }
@@ -100,7 +100,7 @@ public class InputHighlighter : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (_activeNote != null && other.CompareTag(_activeNote._activatorTag))
+        if (_activeNote != null && other.CompareTag(_activeNote.activatorTag))
         {
             _activeNote = null;
         }

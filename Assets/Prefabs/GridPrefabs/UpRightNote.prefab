@@ -126,11 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258ef91c7035a17448a1ee2c5999b759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canBePressed: 0
-  _activatorTag: RedRightUp
+  canBePressed: 0
+  activatorTag: UpRight
   _speed: 200
   _direction: WD
-  hitParticle: {fileID: 5625208785162394811, guid: 0c61ce1206a9f7248a432d344b7713a1, type: 3}
 --- !u!1001 &7844572006550744235
 PrefabInstance:
   m_ObjectHideFlags: 0

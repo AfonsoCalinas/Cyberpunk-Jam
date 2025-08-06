@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  _activatorTag: BlueMiddle
+  activatorTag: Middle
   _speed: 200
   _direction: 
 --- !u!1001 &7333523916351290691

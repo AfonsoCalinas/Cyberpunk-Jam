@@ -5,7 +5,7 @@ public class NoteObject : MonoBehaviour
 {
     public bool canBePressed;
     private bool _hasBeenPressed = false;
-    public string _activatorTag = "Activator";
+    public string activatorTag = "Activator";
 
     [Header("Movement Settings")]
     [SerializeField] public float _speed = 50f; // Units per second
@@ -55,7 +55,7 @@ public class NoteObject : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(_activatorTag))
+        if (other.CompareTag(activatorTag))
         {
             canBePressed = true;
         }
@@ -63,7 +63,7 @@ public class NoteObject : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag(_activatorTag)) return;
+        if (!other.CompareTag(activatorTag)) return;
         canBePressed = false;
         if(!_hasBeenPressed){
             if (GameManager._instance != null)
