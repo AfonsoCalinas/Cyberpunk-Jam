@@ -1,13 +1,11 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 
 public class DanceFloorController : MonoBehaviour
 {
     public FloorTile[] tiles; // Fill with 9 tiles in the Inspector // For tiles 0-8 except 4
     public IdleFloorTile idleTile;    // Reference to tile 4
-    private bool _inputLocked = false;
+    private bool _inputLocked;
     public float inputCooldown = 0.25f; // prevent firing every frame
 
     void Update()

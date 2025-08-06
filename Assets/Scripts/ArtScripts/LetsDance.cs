@@ -14,8 +14,8 @@ public class LetsDance : MonoBehaviour
     private string _currentDirection = ""; // track last input
     
     
-    public bool wining = false;
-    public bool losing = false;
+    public bool wining;
+    public bool losing;
 
 
     
