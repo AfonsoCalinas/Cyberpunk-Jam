@@ -18,11 +18,19 @@ public class InputHighlighter : MonoBehaviour
     private NoteObject _activeNote;
 
     [SerializeField] private AudioClip hitSound;
+    private string _directionName;
 
-    void Update()
+    private void Awake()
     {
-        Vector2 input = InputDirectionManager.GetDirectionVector();
-        Button toHighlight = GetButtonForInput(input);
+        _directionName = InputDirectionManager.GetDirectionName();
+    }
+
+    private void Update()
+    {
+        // Vector2 input = InputDirectionManager.GetDirectionVector();
+        
+        Button toHighlight = GetButtonForInput(_directionName);
+        // Button toHighlight = GetButtonForInput(input);
 
         if (toHighlight != _lastHighlighted)
         {
@@ -31,7 +39,7 @@ public class InputHighlighter : MonoBehaviour
             _lastHighlighted = toHighlight;
         }
 
-        if (_activeNote != null && InputDirectionManager.GetDirectionName() == _activeNote._direction)
+        if (_activeNote && _directionName == _activeNote._direction)
         {
             GameManager._instance.NoteHit();
 
@@ -41,7 +49,23 @@ public class InputHighlighter : MonoBehaviour
         }
     }
 
-    Button GetButtonForInput(Vector2 input)
+    private Button GetButtonForInput(string directionName)
+    {
+        return directionName switch
+        {
+            "WA" => _topLeft,
+            "W" => _topMiddle,
+            "WS" => _topRight,
+            "A" => _midLeft,
+            "D" => _midRight,
+            "SA" => _bottomLeft,
+            "S" => _bottomMiddle,
+            "SD" => _bottomRight,
+            _ => _midMiddle
+        };
+    }
+    
+    /*Button GetButtonForInput(Vector2 input)
     {
         if (input == Vector2.zero) return _midMiddle;
 
@@ -55,11 +79,11 @@ public class InputHighlighter : MonoBehaviour
         if (input.x == 1 && input.y == -1) return _bottomRight;
 
         return _midMiddle;
-    }
+    }*/
 
     void HighlightButton(Button btn)
     {
-        if (btn != null)
+        if (btn)
         {
             ColorBlock cb = btn.colors;
             cb.normalColor = Color.black;
@@ -80,7 +104,7 @@ public class InputHighlighter : MonoBehaviour
 
         foreach (Button btn in allButtons)
         {
-            if (btn != null)
+            if (btn)
             {
                 ColorBlock cb = btn.colors;
                 cb.normalColor = Color.gray;
@@ -103,6 +127,7 @@ public class InputHighlighter : MonoBehaviour
         if (_activeNote != null && other.CompareTag(_activeNote.activatorTag))
         {
             _activeNote = null;
+            Debug.Log("note destroyed");
         }
     }
 }

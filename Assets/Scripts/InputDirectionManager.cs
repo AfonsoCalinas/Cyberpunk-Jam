@@ -13,6 +13,7 @@ public static class InputDirectionManager
     {
         if (!_inputEnabled) return ""; // input locked
         float h, v;
+        
         if (VirtualJoystick.CountActiveInstances() > 0)
         {
             h = VirtualJoystick.GetAxisRaw("Horizontal");
@@ -25,13 +26,16 @@ public static class InputDirectionManager
         }
 
         if (Mathf.Approximately(h, -1) && Mathf.Approximately(v, 1)) return "WA";
+        if (Mathf.Approximately(h, 0) && Mathf.Approximately(v, 1)) return "W";
         if (Mathf.Approximately(h, 1) && Mathf.Approximately(v, 1)) return "WD";
+        
+        if (Mathf.Approximately(h, -1) && Mathf.Approximately(v, 0)) return "A";
+        // if (Mathf.Approximately(h, 0) && Mathf.Approximately(v, 0)) return "O";/*O stands for origin = center*/
+        if (Mathf.Approximately(h, 1) && Mathf.Approximately(v, 0)) return "D";
+
         if (Mathf.Approximately(h, -1) && Mathf.Approximately(v, -1)) return "SA";
+        if (Mathf.Approximately(h, 0) && Mathf.Approximately(v, -1)) return "S";
         if (Mathf.Approximately(h, 1) && Mathf.Approximately(v, -1)) return "SD";
-        if (Mathf.Approximately(h, -1)) return "A";
-        if (Mathf.Approximately(h, 1)) return "D";
-        if (Mathf.Approximately(v, 1)) return "W";
-        if (Mathf.Approximately(v, -1)) return "S";
 
         return "";
     }
