@@ -5,13 +5,14 @@ public class GameOverManager : MonoBehaviour
 {
     public void Retry()
     {
-        SceneManager.LoadScene("GameScene");
+        int nextLevelIndex = LevelTracker.LastLevelIndex +1;
+
+        SceneManager.LoadScene(nextLevelIndex);
     }
 
     public void QuitGame()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
-        // Application.Quit();
     }
 }
