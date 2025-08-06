@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -27,6 +28,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject arrowTooltip4;
     
     [Space]
+    private readonly List<GameObject> _spawnedNotes = new List<GameObject>();
     [SerializeField] private GameObject middleNotePrefab;
     [SerializeField] private RectTransform parentCanvas;
     [SerializeField] public RectTransform spawnPoint;
@@ -153,6 +155,10 @@ public class TutorialManager : MonoBehaviour
         {
             
             case 1:
+                _currentScore = 0;
+                currentScoreText.text = "Score\n" + _currentScore;
+                DestroyAllSpawnedNotes();
+                
                 /*show the keys you have to press*/
                 speak1.SetActive(false);
                 speak1M.SetActive(true);
@@ -170,6 +176,10 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 2:
                 /*Hit the notes at the sound of the Beat!*/
+                
+                _currentScore = 0;
+                currentScoreText.text = "Score\n" + _currentScore;
+                
                 tutorialInputs.SetActive(false);
                 gameInputs.SetActive(true);
                 speak1M.SetActive(false);
@@ -191,6 +201,7 @@ public class TutorialManager : MonoBehaviour
                     StopCoroutine(_noteSpawnerCoroutine);
                     _noteSpawnerCoroutine = null;
                 }
+                DestroyAllSpawnedNotes();
                 
                 InputDirectionManager.EnableInput();
                 
@@ -232,6 +243,9 @@ public class TutorialManager : MonoBehaviour
                     StopCoroutine(_noteSpawnerCoroutine);
                     _noteSpawnerCoroutine = null;
                 }
+                
+                DestroyAllSpawnedNotes();
+                
                 InputDirectionManager.EnableInput();
                 
                 speak4.SetActive(false);
@@ -274,10 +288,25 @@ public class TutorialManager : MonoBehaviour
             GameObject note = Instantiate(middleNotePrefab, parentCanvas);
             RectTransform noteRect = note.GetComponent<RectTransform>();
             noteRect.anchoredPosition = spawnPoint.anchoredPosition;
+            
+            _spawnedNotes.Add(note); // track the spawned note
 
             spawnedCount++;
             yield return new WaitForSeconds(time); // spawn every 1 second (adjust as needed)
         }
+    }
+
+    public void DestroyAllSpawnedNotes()
+    {
+        foreach (GameObject note in _spawnedNotes)
+        {
+            if (note != null)
+            {
+                Destroy(note);
+            }
+        }
+
+        _spawnedNotes.Clear(); // cleanup the list
     }
 
     
