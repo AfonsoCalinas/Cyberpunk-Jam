@@ -44,19 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276dc0a519a872a47bdd707e64d5f814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _beatManager: {fileID: 0}
+  beatManager: {fileID: 0}
   _leftNotePrefabs:
-  - {fileID: 6813177974735551233, guid: 59627c1afabea7d4eaefa4807074330d, type: 3}
-  - {fileID: 6094244046233441360, guid: 7d3d543625674754aa0efac689b58039, type: 3}
-  - {fileID: 6883577855197625620, guid: 08796ea6989e4004f8a62d47cb944255, type: 3}
+  - {fileID: 6813177974735551233, guid: 66f6c7775072f5e49b98700256662fdb, type: 3}
+  - {fileID: 6094244046233441360, guid: 5afc093fd76312440b3c48ecc62c0efe, type: 3}
+  - {fileID: 6883577855197625620, guid: d1bd2c34136728a42b7507f88fb0bcde, type: 3}
   _middleNotePrefabs:
-  - {fileID: 4577635236427932892, guid: bb26d65d401ad7a4eaa118438e380ace, type: 3}
-  - {fileID: 3858570706791811193, guid: cfbc5f40267eb2a489c774986a0ff7fe, type: 3}
-  - {fileID: 5221836485612567885, guid: c75cfd93854fb41499b049cf94a42d88, type: 3}
+  - {fileID: 4577635236427932892, guid: d79d304f90ed4e04fb6f8449428a05d4, type: 3}
+  - {fileID: 3858570706791811193, guid: 5e953779895be3f4f8b86f43d7bc1b13, type: 3}
+  - {fileID: 5221836485612567885, guid: 56ba340a494a251449bb0e8eec00ace7, type: 3}
   _rightNotePrefabs:
-  - {fileID: 4284280181947159505, guid: d65507d002b4a304f892da954b1e2c59, type: 3}
-  - {fileID: 7344465538595133176, guid: 86820f813073b2e45b2693ace1a90f29, type: 3}
-  - {fileID: 2418975049008810539, guid: bcec62e2fae8dfb4ab6aa52d02fd88ca, type: 3}
+  - {fileID: 4284280181947159505, guid: 39a5ade2099897844b56e2581af7163a, type: 3}
+  - {fileID: 7344465538595133176, guid: 1aa9705125efc5f45a1ab2d365fda501, type: 3}
+  - {fileID: 2418975049008810539, guid: 3d1807ba5a9071147a724f3f8963b11a, type: 3}
   _spawnPoints:
   - {fileID: 0}
   - {fileID: 0}

@@ -729,9 +729,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1648530470}
     - target: {fileID: 1937092100948294841, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
+      propertyPath: intervals.Array.data[0].trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1175449527}
+    - target: {fileID: 1937092100948294841, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
       propertyPath: _intervals.Array.data[0]._trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1175449527}
+    - target: {fileID: 1937092100948294841, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
+      propertyPath: intervals.Array.data[0].trigger.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpawnNote
+      objectReference: {fileID: 0}
     - target: {fileID: 1937092100948294841, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
       propertyPath: _intervals.Array.data[0]._trigger.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SpawnNote
@@ -776,6 +784,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4156905033482096402, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: f11553386c4362248b5723f6f9f1556a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -792,6 +804,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5438c33db5d624da61deae3498c41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &707256162 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4156905033482096402, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
+  m_PrefabInstance: {fileID: 707256160}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &843879563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1252,6 +1269,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4130357216303437605, guid: 544a5d7059b63364bad47244d53953a4, type: 3}
+      propertyPath: beatManager
+      value: 
+      objectReference: {fileID: 707256161}
+    - target: {fileID: 4130357216303437605, guid: 544a5d7059b63364bad47244d53953a4, type: 3}
       propertyPath: _beatManager
       value: 
       objectReference: {fileID: 707256161}
@@ -1566,6 +1587,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 259568503}
     - target: {fileID: 2598456614181360386, guid: 7d5df0b9f60e6b04285de3d5db4d107c, type: 3}
+      propertyPath: beatManager
+      value: 
+      objectReference: {fileID: 707256161}
+    - target: {fileID: 2598456614181360386, guid: 7d5df0b9f60e6b04285de3d5db4d107c, type: 3}
       propertyPath: progressBar
       value: 
       objectReference: {fileID: 1967190210}
@@ -1866,7 +1891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1648530470
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2411,7 +2436,7 @@ PrefabInstance:
     - target: {fileID: 7593917369220811805, guid: 68b248a1c2f34294bb9b7ac38dabb40e, type: 3}
       propertyPath: musicSource
       value: 
-      objectReference: {fileID: 1648530470}
+      objectReference: {fileID: 707256162}
     - target: {fileID: 7593917369220811805, guid: 68b248a1c2f34294bb9b7ac38dabb40e, type: 3}
       propertyPath: pauseMenuUI
       value: 

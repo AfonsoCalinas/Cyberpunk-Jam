@@ -5,17 +5,20 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 
+
 public class GameManager : MonoBehaviour
 {
 
-    public AudioSource _music;
+    // public AudioSource _music;
+    public BeatManager beatManager;
+    private AudioSource _music;
     private static bool _startMusic;
     public static GameManager _instance;
     private static readonly int Expression = Shader.PropertyToID("_Expression");
-    private int _currentScore = 0;
+    private int _currentScore;
     private int _scoreMultiplier = 1;
     private const int ScorePerNote = 300;
-    private int _combo = 0;
+    private int _combo;
     public TMP_Text _currentScoreText;
     public TMP_Text _scoreMultiplierText;
     public TMP_Text _hpPlusUpgradeText;
@@ -55,10 +58,14 @@ public class GameManager : MonoBehaviour
         _startMusic = false;
 
         _clickAnyButton.SetActive(true);
+        
+
 
         _currentScoreText.text = "Score\n0";
 
         _scoreMultiplierText.text = "Multiplier\nx1";
+        
+
 
         _healthBar.value = _health;
 
@@ -67,6 +74,8 @@ public class GameManager : MonoBehaviour
         _perfectPosition = _perfectTransform.position;
         
         _sceneScheduled = false;
+        
+        _music = beatManager.music;
 
         if (_music.clip != null)
         {
@@ -78,6 +87,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+
         if (!_startMusic && Input.anyKeyDown)
         {
             _clickAnyButton.SetActive(false);
@@ -95,6 +105,16 @@ public class GameManager : MonoBehaviour
         }
         
 #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Heal();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            StartCoroutine(ResizeHealthBar(50f, 0.3f));
+        }
+        
         if (Input.GetKeyDown(KeyCode.Return))
         {
             SimulateWin();
@@ -144,8 +164,7 @@ public class GameManager : MonoBehaviour
 
             _scoreMultiplierText.text = "Multiplier\nx" + _scoreMultiplier;
 
-            _health = Mathf.Clamp01(_health + hitHealAmount);
-            _healthBar.value = _health;
+            Heal();
 
             StartCoroutine(ShowHpPlusUpgradeText());
 
@@ -171,7 +190,11 @@ public class GameManager : MonoBehaviour
         Debug.Log(_currentScore);
     }
 
-
+    private void Heal()
+    {
+        _health = Mathf.Clamp01(_health + hitHealAmount);
+        _healthBar.value = _health;
+    }
 
     public void NoteMissed()
     {
@@ -228,7 +251,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator ResizeHealthBar(float delta, float duration)
     {
-        RectTransform rt = _healthBar.GetComponent<RectTransform>();
+        RectTransform rt = _healthBarRect.GetComponent<RectTransform>();
         var initialWidth = rt.rect.width;
         var targetWidth = initialWidth + delta;
         var elapsed = 0f;

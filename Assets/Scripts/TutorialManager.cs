@@ -107,7 +107,7 @@ public class TutorialManager : MonoBehaviour
         
         dancerMat.SetFloat(Expression, 0);
 
-        _currentScore = 0;
+
 
         currentScoreText.text = "Score\n0";
 
@@ -122,11 +122,6 @@ public class TutorialManager : MonoBehaviour
         progressBar.minValue = 0;
         progressBar.maxValue = 8;
 
-        _progress = 0;
-
-        _step = 0;
-
-        _combo = 0;
 
     }
 
