@@ -1,33 +1,48 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class NoteSpawner : MonoBehaviour
 {
 
     [Header("References")]
-    [SerializeField] private BeatManager beatManager;
+    //[SerializeField] private BeatManager beatManager;
     [SerializeField] private GameObject[] _leftNotePrefabs;
     [SerializeField] private GameObject[] _middleNotePrefabs;
     [SerializeField] private GameObject[] _rightNotePrefabs;
     [SerializeField] private RectTransform[] _spawnPoints;
     [SerializeField] private RectTransform _parentCanvas;
-    private AudioSource _music;
+    private AudioSource _audioSource;
     private bool _isClosing;
     private float _trim;
     private float _noteSpeed;
 
     private void Start()
     {
-        _music = beatManager.music;
-        _trim = GetEndingForCurrentLevel();
-        _noteSpeed = GetSpeedForCurrentLevel();
+        //_audioSource = beatManager.music;
+        _audioSource = FindAnyObjectByType<AudioSource>();
+        // _audioSource = beatManager.music;
+        
+        var clip = LevelSettings.GetMusic();
+        if (clip != null)
+        {
+            _audioSource.clip = clip;
+
+        }
+        else
+        {
+            Debug.LogWarning("Music clip not found or missing in Resources/Music/");
+        }
+        
+        
+        
+        _trim = LevelSettings.GetEndingForCurrentLevel();
+        _noteSpeed = LevelSettings.GetSpeedForCurrentLevel();
     }
 
     private void Update()
     {
-        if (!_music.clip) return;
-        var delay = Mathf.Max(_music.clip.length - _trim, 0f);
+        if (!_audioSource.clip) return;
+        var delay = Mathf.Max(_audioSource.clip.length - _trim, 0f);
 
         Invoke(nameof(StopSpawningNotes), delay);
     }
@@ -59,7 +74,7 @@ public class NoteSpawner : MonoBehaviour
     }
 
     
-    private static float GetSpeedForCurrentLevel()
+    /*private static float GetSpeedForCurrentLevel()
     {
         var index = SceneManager.GetActiveScene().buildIndex;
 
@@ -73,13 +88,11 @@ public class NoteSpawner : MonoBehaviour
             case 5: return 350f; // Level4
             default: return 200f;
         }
-
     }
     
     private static float GetEndingForCurrentLevel()
     {
         var coda = SceneManager.GetActiveScene().buildIndex;
-
         
         // Assuming Tutorial = 1, Level1 = 2, Level2 = 3, ...
         // Adjust these speeds as needed
@@ -91,11 +104,9 @@ public class NoteSpawner : MonoBehaviour
             case 5: return 6f; // Level4
             default: return 10f;
         }
-        
-
-    }
+    }*/
     
-    public void StopSpawningNotes()
+    private void StopSpawningNotes()
     {
         _isClosing = true;
     }

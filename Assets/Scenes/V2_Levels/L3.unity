@@ -808,11 +808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5438c33db5d624da61deae3498c41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &707256162 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4156905033482096402, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
-  m_PrefabInstance: {fileID: 707256160}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &843879563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1895,7 +1890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1648530470
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2440,7 +2435,7 @@ PrefabInstance:
     - target: {fileID: 7593917369220811805, guid: 68b248a1c2f34294bb9b7ac38dabb40e, type: 3}
       propertyPath: musicSource
       value: 
-      objectReference: {fileID: 707256162}
+      objectReference: {fileID: 0}
     - target: {fileID: 7593917369220811805, guid: 68b248a1c2f34294bb9b7ac38dabb40e, type: 3}
       propertyPath: pauseMenuUI
       value: 

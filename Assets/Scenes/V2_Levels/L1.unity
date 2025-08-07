@@ -511,6 +511,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 686589752}
+    - target: {fileID: 7735030121146982027, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8000354803711397420, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -900,6 +904,10 @@ PrefabInstance:
       value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 1937092100948294841, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 1648530470}
+    - target: {fileID: 1937092100948294841, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 1648530470}
@@ -960,6 +968,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4156905033482096402, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156905033482096402, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: 4222bcc0f1b08374d9bc5b88e3587464, type: 3}
@@ -979,11 +991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5438c33db5d624da61deae3498c41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &707256162 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4156905033482096402, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
-  m_PrefabInstance: {fileID: 707256160}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &885736831
 GameObject:
   m_ObjectHideFlags: 0
@@ -41283,7 +41290,7 @@ PrefabInstance:
     - target: {fileID: 7593917369220811805, guid: 68b248a1c2f34294bb9b7ac38dabb40e, type: 3}
       propertyPath: musicSource
       value: 
-      objectReference: {fileID: 707256162}
+      objectReference: {fileID: 0}
     - target: {fileID: 7593917369220811805, guid: 68b248a1c2f34294bb9b7ac38dabb40e, type: 3}
       propertyPath: pauseMenuUI
       value: 

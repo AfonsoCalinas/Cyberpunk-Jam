@@ -1,17 +1,27 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 public class BeatManager : MonoBehaviour
 {
-    [Header("Audio Settings")]
-    [SerializeField] private float bpm;
+    //[Header("Audio Settings")]
+    //[SerializeField] private float bpm;
     // [SerializeField] private AudioSource music;
+    
+    private float _bpm;
 
-    public AudioSource music;
+    //public AudioSource music;
+    private AudioSource _audioSource;
 
     [Header("Beat Intervals")]
     [SerializeField] private Intervals[] intervals;
+
+    private void Start()
+    {
+        _audioSource = FindAnyObjectByType<AudioSource>();
+        _bpm = LevelSettings.GetBpmForCurrentLevel();
+    }
 
     // Update is called once per frame
     private void Update()
@@ -19,7 +29,7 @@ public class BeatManager : MonoBehaviour
         foreach (Intervals interval in intervals)
         {
             // Time in Beats
-            float sampledTime = (music.timeSamples / (music.clip.frequency * interval.GetBeatLenght(bpm)));
+            float sampledTime = (_audioSource.timeSamples / (_audioSource.clip.frequency * interval.GetBeatLenght(_bpm)));
             interval.CheckForNewInterval(sampledTime);
         }
     }
@@ -30,7 +40,7 @@ public class BeatManager : MonoBehaviour
 public class Intervals
 {
     [Tooltip("Steps means subdivisions: 1 = whole note, 2 = half notes, 4 = quarter notes, etc.")]
-    [SerializeField] private float steps;
+    [SerializeField] private float steps = 0.25f;
 
  
     [Tooltip("What should happen on this interval?")]

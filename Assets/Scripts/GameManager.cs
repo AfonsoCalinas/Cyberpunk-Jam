@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
 {
 
     // public AudioSource _music;
-    public BeatManager beatManager;
-    private AudioSource _music;
+    //public BeatManager beatManager;
+    private AudioSource _audioSource;
     private static bool _startMusic;
     public static GameManager _instance;
     private static readonly int Expression = Shader.PropertyToID("_Expression");
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip badSound;
 
     public Material _dancerMat;
+    private LetsDance _letsDance;
     private const float WaitTime = 2f;
 
     public Slider progressBar;
@@ -74,13 +75,28 @@ public class GameManager : MonoBehaviour
         _perfectPosition = _perfectTransform.position;
         
         _sceneScheduled = false;
-        
-        _music = beatManager.music;
 
-        if (_music.clip != null)
+        _letsDance = FindAnyObjectByType<LetsDance>();
+        _audioSource = FindAnyObjectByType<AudioSource>();
+        // _audioSource = beatManager.music;
+        
+        var clip = LevelSettings.GetMusic();
+        if (clip != null)
+        {
+            _audioSource.clip = clip;
+
+        }
+        else
+        {
+            Debug.LogWarning("Music clip not found or missing in Resources/Music/");
+        }
+        
+
+
+        if (_audioSource.clip != null)
         {
             progressBar.minValue = 0;
-            progressBar.maxValue = _music.clip.length;
+            progressBar.maxValue = _audioSource.clip.length;
         }
         UpdateLevelTitle();
     }
@@ -94,14 +110,16 @@ public class GameManager : MonoBehaviour
 
             _startMusic = true;
 
-            _music.Play();
+            _audioSource.Play();
 
             ScheduleSceneTransition();
+
+            _letsDance.StartDancing();
         }
 
-        if (_music.isPlaying)
+        if (_audioSource.isPlaying)
         {
-            progressBar.value = _music.time;
+            progressBar.value = _audioSource.time;
         }
         
 #if UNITY_EDITOR
@@ -269,9 +287,9 @@ public class GameManager : MonoBehaviour
 
     private void ScheduleSceneTransition()
     {
-        if (_music.clip != null && !_sceneScheduled)
+        if (_audioSource.clip != null && !_sceneScheduled)
         {
-            float delay = Mathf.Max(_music.clip.length - 5f, 0f);
+            float delay = Mathf.Max(_audioSource.clip.length - 5f, 0f);
             _sceneScheduled = true;
             Invoke(nameof(GoToVictoryScene), delay);
         }
