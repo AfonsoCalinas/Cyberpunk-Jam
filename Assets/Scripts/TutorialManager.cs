@@ -122,7 +122,6 @@ public class TutorialManager : MonoBehaviour
         progressBar.minValue = 0;
         progressBar.maxValue = 8;
 
-
     }
 
     // Update is called once per frame

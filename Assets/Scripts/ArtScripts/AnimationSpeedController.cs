@@ -10,7 +10,7 @@ public class AnimationSpeedController : MonoBehaviour
         if (animator == null)
             animator = GetComponent<Animator>();
 
-        animator.speed = GetSpeedForCurrentLevel();
+        animator.speed = LevelSettings.GetAnimSpeedForCurrentLevel();
     }
 
     private static float GetSpeedForCurrentLevel()

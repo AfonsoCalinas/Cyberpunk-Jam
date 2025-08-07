@@ -54,10 +54,15 @@ public class LetsDance : MonoBehaviour
             Debug.LogWarning("Music clip not found or missing in Resources/Music/");
         }
         
-        
-        
-        _trim = LevelSettings.GetEndingForCurrentLevel();
+        _trim = LevelSettings.GetAnimEndingForCurrentLevel();
 
+        if (!wining || !losing)
+        {
+            if (!_audioSource.clip) return;
+            var delay = Mathf.Max(_audioSource.clip.length - _trim, 0f);
+        
+            Invoke(nameof(StopDancing), delay);
+        }
     }
 
 
@@ -97,10 +102,6 @@ public class LetsDance : MonoBehaviour
         }
         
 
-        if (!_audioSource.clip) return;
-        var delay = Mathf.Max(_audioSource.clip.length - _trim, 0f);
-        
-        Invoke(nameof(StopDancing), delay);
     }
 
     private void StopDancing()

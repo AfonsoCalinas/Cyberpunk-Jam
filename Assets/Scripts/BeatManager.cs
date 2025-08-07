@@ -1,7 +1,7 @@
-using System;
+
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
+
 
 public class BeatManager : MonoBehaviour
 {
@@ -41,18 +41,28 @@ public class Intervals
 {
     [Tooltip("Steps means subdivisions: 1 = whole note, 2 = half notes, 4 = quarter notes, etc.")]
     [SerializeField] private float steps = 0.25f;
-
+    // private float _steps;
  
     [Tooltip("What should happen on this interval?")]
     [SerializeField] private UnityEvent trigger;
     private int _lastInterval;
+    
+
     public void AddListener(UnityAction action) => trigger.AddListener(action);
     public void RemoveListener(UnityAction action) => trigger.RemoveListener(action);
 
+
+    /*private void Awake()
+    {
+        _steps = LevelSettings.GetStepsForCurrentLevel();
+    }*/
+    
     // Lenght of our current beat
     public float GetBeatLenght(float bpm)
     {
         return 60f / (bpm * steps);
+        //return 60f / (bpm * _steps);
+
     }
     
     // Have we crossed a new beat or not
