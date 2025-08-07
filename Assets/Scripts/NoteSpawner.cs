@@ -85,10 +85,10 @@ public class NoteSpawner : MonoBehaviour
         // Adjust these speeds as needed
         switch (coda)
         {
-            case 2: return 11f; // Level1
+            case 2: return 12f; // Level1
             case 3: return 10f; // Level2
-            case 4: return 9f; // Level3
-            case 5: return 8f; // Level4
+            case 4: return 8f; // Level3
+            case 5: return 6f; // Level4
             default: return 10f;
         }
         

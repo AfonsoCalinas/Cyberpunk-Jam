@@ -721,6 +721,10 @@ PrefabInstance:
       value: BeatManager
       objectReference: {fileID: 0}
     - target: {fileID: 1937092100948294841, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
+      propertyPath: bpm
+      value: 132
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937092100948294841, guid: 0be691c99dee2ff43b9a1db28d5e9944, type: 3}
       propertyPath: _bpm
       value: 132
       objectReference: {fileID: 0}
