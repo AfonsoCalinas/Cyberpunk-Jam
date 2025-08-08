@@ -4,12 +4,14 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public GameObject settingsMenuUI;
 
-    public AudioSource musicSource;
+    //public AudioSource musicSource;
 
     private AudioSource _audioSource;
 
     public bool isPaused;
+    public bool isSetting;
 
     private void Start()
     {
@@ -23,10 +25,21 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) // Or your pause key
         {
-            if (isPaused)
+            if (isPaused && !isSetting)
                 Resume();
             else
-                Pause();
+            {
+                if (!isSetting)
+                {
+                    Pause();
+                }
+                else
+                {
+                    NotSetting();
+                }
+
+            }
+
         }
     }
 
@@ -48,6 +61,20 @@ public class PauseManager : MonoBehaviour
         //musicSource.Pause();
     }
 
+    public void Setting()
+    {
+        settingsMenuUI.SetActive(true);
+
+        isSetting = true;
+    }
+    public void NotSetting()
+    {
+        settingsMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
+        isSetting = false;
+    }
+
+    
     public void Restart()
     {
         Time.timeScale = 1f;

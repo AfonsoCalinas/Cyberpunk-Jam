@@ -475,6 +475,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 431079219}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 979825297}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NotSetting
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6119162647854152902, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -522,6 +562,14 @@ PrefabInstance:
     - target: {fileID: 8345348173939822155, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_text
       value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375532218574057896, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 431079219}
+    - target: {fileID: 8375532218574057896, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Setting
       objectReference: {fileID: 0}
     - target: {fileID: 8769140513339854768, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -578,6 +626,11 @@ RectTransform:
 --- !u!224 &146184018 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8491540025104247214, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+  m_PrefabInstance: {fileID: 146184012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &172157741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 686667355696655298, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
   m_PrefabInstance: {fileID: 146184012}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &259568503 stripped
@@ -41295,6 +41348,10 @@ PrefabInstance:
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 979825297}
+    - target: {fileID: 7593917369220811805, guid: 68b248a1c2f34294bb9b7ac38dabb40e, type: 3}
+      propertyPath: settingsMenuUI
+      value: 
+      objectReference: {fileID: 172157741}
     - target: {fileID: 7824115637325358472, guid: 68b248a1c2f34294bb9b7ac38dabb40e, type: 3}
       propertyPath: m_Name
       value: PauseManager

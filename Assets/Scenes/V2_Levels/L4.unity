@@ -241,10 +241,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2152989334434274039, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
-      propertyPath: m_Name
-      value: Settings
-      objectReference: {fileID: 0}
     - target: {fileID: 2454311151592139709, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -461,6 +457,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6109269094970685992, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 431079219}
     - target: {fileID: 6119162647854152902, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -492,6 +492,38 @@ PrefabInstance:
     - target: {fileID: 8345348173939822155, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
       propertyPath: m_text
       value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375532218574057896, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375532218574057896, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 431079219}
+    - target: {fileID: 8375532218574057896, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1891694504}
+    - target: {fileID: 8375532218574057896, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375532218574057896, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375532218574057896, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375532218574057896, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375532218574057896, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2577,6 +2609,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8653625530006496439, guid: 3bd93a4bb5dc3c74f8db55d43c671413, type: 3}
   m_PrefabInstance: {fileID: 513345179}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1891694504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 686667355696655298, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
+  m_PrefabInstance: {fileID: 146184012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1967190210 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3936626434449763414, guid: fa2a56dbe1db52f4db99391c756e0ad9, type: 3}
@@ -2720,6 +2757,10 @@ PrefabInstance:
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 979825297}
+    - target: {fileID: 7593917369220811805, guid: 68b248a1c2f34294bb9b7ac38dabb40e, type: 3}
+      propertyPath: settingsMenuUI
+      value: 
+      objectReference: {fileID: 1891694504}
     - target: {fileID: 7824115637325358472, guid: 68b248a1c2f34294bb9b7ac38dabb40e, type: 3}
       propertyPath: m_Name
       value: PauseManager
