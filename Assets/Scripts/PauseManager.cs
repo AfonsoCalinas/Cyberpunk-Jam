@@ -7,11 +7,16 @@ public class PauseManager : MonoBehaviour
 
     public AudioSource musicSource;
 
+    private AudioSource _audioSource;
+
     public bool isPaused;
 
     private void Start()
     {
         pauseMenuUI.SetActive(false);
+        
+        //Get an AudioSource
+        _audioSource = FindAnyObjectByType<AudioSource>();
     }
 
     private void Update()
@@ -30,7 +35,8 @@ public class PauseManager : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-        musicSource.Play();
+        _audioSource.Play();
+        // musicSource.Play();
     }
 
     public void Pause()
@@ -38,7 +44,8 @@ public class PauseManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        musicSource.Pause();
+        _audioSource.Pause();
+        //musicSource.Pause();
     }
 
     public void Restart()

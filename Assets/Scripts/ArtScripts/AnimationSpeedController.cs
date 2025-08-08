@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+// using UnityEngine.SceneManagement;
 
 public class AnimationSpeedController : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class AnimationSpeedController : MonoBehaviour
         animator.speed = LevelSettings.GetAnimSpeedForCurrentLevel();
     }
 
-    private static float GetSpeedForCurrentLevel()
+    /*private static float GetSpeedForCurrentLevel()
     {
         var index = SceneManager.GetActiveScene().buildIndex;
 
@@ -26,5 +26,5 @@ public class AnimationSpeedController : MonoBehaviour
             case 5: return 1.75f;  // Level4
             default: return 1.0f;  // Default speed
         }
-    }
+    }*/
 }

@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public Material _dancerMat;
     private LetsDance _letsDance;
+    private float _animTrim;
     private const float WaitTime = 2f;
 
     public Slider progressBar;
@@ -91,7 +92,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Music clip not found or missing in Resources/Music/");
         }
         
-
+        _animTrim = LevelSettings.GetAnimEndingForCurrentLevel();
 
         if (_audioSource.clip != null)
         {
@@ -115,6 +116,9 @@ public class GameManager : MonoBehaviour
             ScheduleSceneTransition();
 
             _letsDance.StartDancing();
+            
+
+
         }
 
         if (_audioSource.isPlaying)
@@ -136,6 +140,20 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             SimulateWin();
+        }
+        
+        // Speed up the whole game
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Time.timeScale = +2f; // 2x faster
+            Debug.Log("Debug: Time scale set to +2x");
+        }
+
+        // Reset to normal speed
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Time.timeScale = 1f;
+            Debug.Log("Debug: Time scale reset to normal");
         }
 #endif
     }
@@ -289,10 +307,20 @@ public class GameManager : MonoBehaviour
     {
         if (_audioSource.clip != null && !_sceneScheduled)
         {
-            float delay = Mathf.Max(_audioSource.clip.length - 5f, 0f);
+            var delay = Mathf.Max(_audioSource.clip.length - 5f, 0f);
             _sceneScheduled = true;
             Invoke(nameof(GoToVictoryScene), delay);
+            
+            
+            var animDelay = delay - _animTrim+ 5f;
+        
+            Invoke(nameof(TransAnim), animDelay);
         }
+    }
+
+    private void TransAnim()
+    {
+        _letsDance.StopDancing();
     }
 
     private void GoToVictoryScene()

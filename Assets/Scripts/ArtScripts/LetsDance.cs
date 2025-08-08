@@ -11,8 +11,8 @@ public class LetsDance : MonoBehaviour
     public float retriggerDelay = 0.5f;
     private float _retriggerTimer;
 
-    private AudioSource _audioSource;
-    private float _trim;
+    // private AudioSource _audioSource;
+    // private float _animTrim;
     
     public static LetsDance _instance;
     
@@ -39,6 +39,7 @@ public class LetsDance : MonoBehaviour
             characterAnimator.SetBool(Lose, true);
         }
         
+        /*
         //Get an AudioSource
         _audioSource = FindAnyObjectByType<AudioSource>();
 
@@ -54,15 +55,15 @@ public class LetsDance : MonoBehaviour
             Debug.LogWarning("Music clip not found or missing in Resources/Music/");
         }
         
-        _trim = LevelSettings.GetAnimEndingForCurrentLevel();
+        _animTrim = LevelSettings.GetAnimEndingForCurrentLevel();
 
         if (!wining || !losing)
         {
             if (!_audioSource.clip) return;
-            var delay = Mathf.Max(_audioSource.clip.length - _trim, 0f);
+            var delay = Mathf.Max(_audioSource.clip.length - _animTrim, 0f);
         
             Invoke(nameof(StopDancing), delay);
-        }
+        }*/
     }
 
 
@@ -104,7 +105,7 @@ public class LetsDance : MonoBehaviour
 
     }
 
-    private void StopDancing()
+    public void StopDancing()
     {
         characterAnimator.SetBool(Idle, true);
     }
