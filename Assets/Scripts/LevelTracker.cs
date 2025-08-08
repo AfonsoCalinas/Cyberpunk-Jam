@@ -11,6 +11,11 @@ public static class LevelTracker
 
     public static int LastLevelIndex { get; private set; } = -1;
 
+    public static void SetCurrentLevel(int buildIndex)
+    {
+        LastLevelIndex = buildIndex;
+    }
+    
     public static int GetUnlockedLevelIndex()
     {
         // Always return at least the tutorial index

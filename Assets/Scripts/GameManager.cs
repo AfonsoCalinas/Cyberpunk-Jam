@@ -50,7 +50,13 @@ public class GameManager : MonoBehaviour
     public Slider progressBar;
     public ParticleEffectController particleEffectController;
     public PauseManager pauseManager;
-    void Start()
+    
+    private void Awake()
+    {
+        LevelTracker.SetCurrentLevel(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void Start()
     {
         _dancerMat.SetFloat(Expression, 0);
         
@@ -105,7 +111,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
 
-        if (!_startMusic && Input.anyKeyDown)
+        if (!_startMusic && Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Space))
         {
             _clickAnyButton.SetActive(false);
 
