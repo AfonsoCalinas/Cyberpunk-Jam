@@ -66,6 +66,8 @@ public class TutorialManager : MonoBehaviour
     [Space]
     public Material dancerMat;
 
+    private LetsDance _letsDance;
+    
     private const float WaitTime = 2f;
 
     [Space]
@@ -79,7 +81,7 @@ public class TutorialManager : MonoBehaviour
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         _instance = this;
         
@@ -107,7 +109,9 @@ public class TutorialManager : MonoBehaviour
         
         dancerMat.SetFloat(Expression, 0);
 
-
+        _letsDance = FindAnyObjectByType<LetsDance>();
+        
+        _letsDance.StopDancing();
 
         currentScoreText.text = "Score\n0";
 
@@ -168,6 +172,8 @@ public class TutorialManager : MonoBehaviour
                     StopCoroutine(_noteSpawnerCoroutine);
                     _noteSpawnerCoroutine = null;
                 }
+                
+                _letsDance.StopDancing();
                 break;
             case 2:
                 /*Hit the notes at the sound of the Beat!*/
@@ -183,6 +189,8 @@ public class TutorialManager : MonoBehaviour
                 speak3.SetActive(false);
                 arrowTooltip1.SetActive(true);
                 arrowTooltip4.SetActive(false);
+                
+                _letsDance.StartDancing();
                 
                 // Start periodic spawning if not already started
                 _noteSpawnerCoroutine ??= StartCoroutine(SpawnNotesPeriodically(4, 3f));
