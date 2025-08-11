@@ -125,6 +125,8 @@ public class TutorialManager : MonoBehaviour
 
         progressBar.minValue = 0;
         progressBar.maxValue = 8;
+        
+        pauseManager.hasStarted = true;
 
     }
 

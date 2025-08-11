@@ -72,8 +72,8 @@ public class GameManager : MonoBehaviour
         _currentScoreText.text = "Score\n0";
 
         _scoreMultiplierText.text = "Multiplier\nx1";
-        
 
+        pauseManager.hasStarted = false;
 
         _healthBar.value = _health;
 
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
 
-        if (!_startMusic && Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Space))
+        if (!_startMusic && Input.anyKeyDown /*&& !Input.GetKeyDown(KeyCode.Space)*/)
         {
             _clickAnyButton.SetActive(false);
 
@@ -122,8 +122,8 @@ public class GameManager : MonoBehaviour
             ScheduleSceneTransition();
 
             _letsDance.StartDancing();
-            
 
+            pauseManager.hasStarted = true;
 
         }
 

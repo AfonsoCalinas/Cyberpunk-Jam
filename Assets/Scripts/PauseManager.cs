@@ -12,6 +12,7 @@ public class PauseManager : MonoBehaviour
 
     public bool isPaused;
     public bool isSetting;
+    public bool hasStarted;
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Or your pause key
+        if (Input.GetKeyDown(KeyCode.Space) && hasStarted) // Or your pause key
         {
             if (isPaused && !isSetting)
                 Resume();
