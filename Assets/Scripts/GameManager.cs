@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
 
     // public AudioSource _music;
-    //public BeatManager beatManager;
+
     private AudioSource _audioSource;
     private static bool _startMusic;
     public static GameManager _instance;
